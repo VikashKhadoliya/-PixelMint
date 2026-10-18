@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Geometric Media Stack Mark -->
+  <rect x="2" y="8" width="20" height="20" rx="4.5" fill="#6B7280" fill-opacity="0.3" stroke="#9CA3AF" stroke-width="1.2" stroke-opacity="0.5" transform="rotate(-6 12 18)" />
+  <rect x="6" y="5" width="20" height="20" rx="4.5" fill="#374151" fill-opacity="0.4" stroke="#9CA3AF" stroke-width="1.2" stroke-opacity="0.7" transform="rotate(3 16 15)" />
+  <rect x="8" y="3" width="21" height="21" rx="4.5" fill="#E53935" />
+  <path d="M15.5 9.5L23 13.5L15.5 17.5V9.5Z" fill="#FFFFFF" />
+</svg>

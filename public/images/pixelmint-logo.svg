@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 36" fill="none">
+  <!-- Geometric Media Stack Icon (32x32) -->
+  <g transform="translate(2, 2)">
+    <!-- Base Layer 3 (Deep Neutral) -->
+    <rect x="0" y="8" width="22" height="22" rx="5" fill="#6B7280" fill-opacity="0.25" stroke="#9CA3AF" stroke-width="1.2" stroke-opacity="0.4" transform="rotate(-6 11 19)" />
+    <!-- Middle Layer 2 (Media Frame Neutral) -->
+    <rect x="5" y="4" width="22" height="22" rx="5" fill="#374151" fill-opacity="0.35" stroke="#9CA3AF" stroke-width="1.2" stroke-opacity="0.6" transform="rotate(3 16 15)" />
+    <!-- Top Active Layer 1 (Brand Red #E53935) -->
+    <rect x="7" y="3" width="22" height="22" rx="5" fill="#E53935" />
+    <!-- Media Center Cutout (White Play/Crop Polygon) -->
+    <path d="M15 9.5L23 14L15 18.5V9.5Z" fill="#FFFFFF" />
+  </g>
+
+  <!-- Wordmark -->
+  <text x="40" y="25" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Outfit', 'Plus Jakarta Sans', sans-serif" font-size="21" font-weight="800" letter-spacing="-0.03em" fill="currentColor">
+    Pixel<tspan fill="#E53935">Mint</tspan>
+  </text>
+</svg>
