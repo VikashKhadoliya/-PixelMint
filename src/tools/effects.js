@@ -34,7 +34,7 @@ export function renderEffects(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <img src="/icons/tools-wizard.png" class="tool-hero-icon" alt="Effects" />
+          <img src="/icons/tools-wizard.svg" class="tool-hero-icon" alt="Effects" />
           <span class="tool-badge">Creative Studio</span>
           <h2>Effects & Adjustments</h2>
         </div>
@@ -144,7 +144,7 @@ export function renderEffects(container, onChainMedia) {
 
           <div class="actions-row">
             <button class="btn btn-accent btn-lg" id="ef-execute-btn">
-              <img src="/icons/tools-wizard.png" class="btn-icon-img" alt="" /> Apply Effects!
+              <img src="/icons/tools-wizard.svg" class="btn-icon-img" alt="" /> Apply Effects!
             </button>
           </div>
 
@@ -187,10 +187,10 @@ export function renderEffects(container, onChainMedia) {
           <div class="chain-pipeline">
             <div class="chain-title">Chain this result into another tool:</div>
             <div class="chain-buttons">
-              <button class="chain-btn" data-tool="cropper"><img src="/icons/transform-crop.png" class="chain-btn-icon" alt="" /> Crop</button>
-              <button class="chain-btn" data-tool="resizer"><img src="/icons/transform-scale.png" class="chain-btn-icon" alt="" /> Resize</button>
-              <button class="chain-btn" data-tool="optimizer"><img src="/icons/speedometer.png" class="chain-btn-icon" alt="" /> Optimize</button>
-              <button class="chain-btn" data-tool="converter"><img src="/icons/view-refresh.png" class="chain-btn-icon" alt="" /> Convert</button>
+              <button class="chain-btn" data-tool="cropper"><img src="/icons/transform-crop.svg" class="chain-btn-icon" alt="" /> Crop</button>
+              <button class="chain-btn" data-tool="resizer"><img src="/icons/transform-scale.svg" class="chain-btn-icon" alt="" /> Resize</button>
+              <button class="chain-btn" data-tool="optimizer"><img src="/icons/speedometer.svg" class="chain-btn-icon" alt="" /> Optimize</button>
+              <button class="chain-btn" data-tool="converter"><img src="/icons/view-refresh.svg" class="chain-btn-icon" alt="" /> Convert</button>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ export function renderVideoToGif(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <img src="/icons/camera-video.png" class="tool-hero-icon" alt="Video to GIF" />
+          <img src="/icons/camera-video.svg" class="tool-hero-icon" alt="Video to GIF" />
           <span class="tool-badge">Video Converter</span>
           <h2>Video to Animated GIF</h2>
         </div>
@@ -112,7 +112,7 @@ export function renderVideoToGif(container, onChainMedia) {
 
           <div class="actions-row">
             <button class="btn btn-accent btn-lg" id="vtg-convert-btn">
-              <img src="/icons/camera-video.png" class="btn-icon-img" alt="" /> Convert to GIF!
+              <img src="/icons/camera-video.svg" class="btn-icon-img" alt="" /> Convert to GIF!
             </button>
           </div>
 
@@ -155,11 +155,11 @@ export function renderVideoToGif(container, onChainMedia) {
           <div class="chain-pipeline">
             <div class="chain-title">Chain this result into another tool:</div>
             <div class="chain-buttons">
-              <button class="chain-btn" data-tool="cropper"><img src="/icons/transform-crop.png" class="chain-btn-icon" alt="" /> Crop</button>
-              <button class="chain-btn" data-tool="resizer"><img src="/icons/transform-scale.png" class="chain-btn-icon" alt="" /> Resize</button>
-              <button class="chain-btn" data-tool="optimizer"><img src="/icons/speedometer.png" class="chain-btn-icon" alt="" /> Optimize</button>
-              <button class="chain-btn" data-tool="effects"><img src="/icons/tools-wizard.png" class="chain-btn-icon" alt="" /> Effects</button>
-              <button class="chain-btn" data-tool="converter"><img src="/icons/view-refresh.png" class="chain-btn-icon" alt="" /> Convert</button>
+              <button class="chain-btn" data-tool="cropper"><img src="/icons/transform-crop.svg" class="chain-btn-icon" alt="" /> Crop</button>
+              <button class="chain-btn" data-tool="resizer"><img src="/icons/transform-scale.svg" class="chain-btn-icon" alt="" /> Resize</button>
+              <button class="chain-btn" data-tool="optimizer"><img src="/icons/speedometer.svg" class="chain-btn-icon" alt="" /> Optimize</button>
+              <button class="chain-btn" data-tool="effects"><img src="/icons/tools-wizard.svg" class="chain-btn-icon" alt="" /> Effects</button>
+              <button class="chain-btn" data-tool="converter"><img src="/icons/view-refresh.svg" class="chain-btn-icon" alt="" /> Convert</button>
             </div>
           </div>
         </div>

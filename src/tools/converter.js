@@ -13,7 +13,7 @@ export function renderConverter(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <img src="/icons/view-refresh.png" class="tool-hero-icon" alt="Format Converter" />
+          <img src="/icons/view-refresh.svg" class="tool-hero-icon" alt="Format Converter" />
           <span class="tool-badge">Format Converter</span>
           <h2>Batch Format Converter</h2>
         </div>
@@ -70,7 +70,7 @@ export function renderConverter(container, onChainMedia) {
 
           <div class="actions-row">
             <button class="btn btn-accent btn-lg" id="conv-execute-btn">
-              <img src="/icons/view-refresh.png" class="btn-icon-img" alt="" /> Convert All (<span id="conv-queue-count">0</span>)
+              <img src="/icons/view-refresh.svg" class="btn-icon-img" alt="" /> Convert All (<span id="conv-queue-count">0</span>)
             </button>
             <button class="btn btn-outline" id="conv-clear-btn">Clear Queue</button>
           </div>
@@ -225,7 +225,7 @@ export function renderConverter(container, onChainMedia) {
             </svg>
             Download
           </button>
-          <button class="btn btn-xs btn-outline chain-item"><img src="/icons/transform-scale.png" class="chain-btn-icon" alt="" /> Chain</button>
+          <button class="btn btn-xs btn-outline chain-item"><img src="/icons/transform-scale.svg" class="chain-btn-icon" alt="" /> Chain</button>
         `;
       }
 
