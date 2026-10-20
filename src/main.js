@@ -25,7 +25,6 @@ import { renderPrivacyPage, renderAboutPage, renderHelpPage, renderSitemapPage }
 // DOM Selectors
 const appContainer = document.querySelector('#tool-viewport');
 const navTabButtons = document.querySelectorAll('.nav-tab-btn');
-const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
 const drawerLinks = document.querySelectorAll('.mobile-drawer-link');
 const brandLogo = document.querySelector('.brand-logo');
 const themeToggleBtn = document.querySelector('#theme-toggle-btn');
@@ -33,6 +32,27 @@ const mobileMenuBtn = document.querySelector('#mobile-menu-btn');
 const mobileDrawer = document.querySelector('#mobile-drawer');
 const drawerBackdrop = document.querySelector('#drawer-backdrop');
 const drawerCloseBtn = document.querySelector('#drawer-close-btn');
+
+// Suppress third-party injected floating extension widgets (e.g. Adobe Acrobat)
+function removeInjectedWidgets() {
+  const selectors = [
+    'adobe-acrobat-web-widget',
+    '#adobe-acrobat-web-widget',
+    '[id*="adobe-acrobat"]',
+    '[class*="adobe-acrobat"]',
+    '[id*="acrobat-web-widget"]',
+    '[class*="acrobat-web-widget"]',
+    '#floating-pdf-btn',
+    '.pdf-floating-btn'
+  ];
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => el.remove());
+  });
+}
+removeInjectedWidgets();
+if (typeof MutationObserver !== 'undefined') {
+  new MutationObserver(removeInjectedWidgets).observe(document.documentElement, { childList: true, subtree: true });
+}
 
 let activeToolName = 'home';
 let toolInstances = {};
@@ -445,41 +465,6 @@ function switchTool(toolKey) {
     btn.classList.toggle('active', btn.dataset.tool === toolKey || btn.dataset.tool === primaryTab);
   });
 
-  // Update mobile bottom bar active states (mapped to 6 core shortcuts)
-  const bottomCategoryMap = {
-    home: 'home',
-    about: 'home',
-    privacy: 'home',
-    help: 'home',
-    sitemap: 'home',
-    gifMaker: 'gifMaker',
-    videoToGif: 'videoToGif',
-    videoTools: 'videoToGif',
-    cutVideo: 'videoToGif',
-    resizeVideo: 'videoToGif',
-    cropVideo: 'videoToGif',
-    rotateVideo: 'videoToGif',
-    videoSpeed: 'videoToGif',
-    videoFilters: 'videoToGif',
-    loopVideo: 'videoToGif',
-    videoToJpg: 'videoToGif',
-    screenRecorder: 'videoToGif',
-    gifToMp4: 'videoToGif',
-    resizer: 'resizer',
-    rotate: 'resizer',
-    reverse: 'resizer',
-    speed: 'resizer',
-    cut: 'resizer',
-    cropper: 'cropper',
-    optimizer: 'optimizer',
-    targetSizeCompressor: 'optimizer',
-    discord8mb: 'optimizer'
-  };
-  const activeBottomTool = bottomCategoryMap[toolKey] || toolKey;
-  mobileNavItems.forEach(item => {
-    item.classList.toggle('active', item.dataset.tool === toolKey || item.dataset.tool === activeBottomTool);
-  });
-
   // Update mobile drawer active states
   drawerLinks.forEach(link => {
     link.classList.toggle('active', link.dataset.tool === toolKey);
@@ -510,12 +495,6 @@ navTabButtons.forEach(btn => {
   });
 });
 
-mobileNavItems.forEach(item => {
-  item.addEventListener('click', () => {
-    toggleMobileDrawer(false);
-    switchTool(item.dataset.tool);
-  });
-});
 
 drawerLinks.forEach(link => {
   link.addEventListener('click', (e) => {

@@ -121,6 +121,17 @@ The following 18 active routes were evaluated under every viewport in the matrix
   5. Configured auto-closing when clicking drawer links, clicking the backdrop, or pressing Escape.
 - **Retest Result:** Drawer opens and closes smoothly, scrolls independently with no background document movement, and closes instantly upon tool selection. **PASSED**.
 
+### Issue 6: Mobile Bottom Navigation Bar Removal & Extension Widget Suppression
+- **Severity:** User Design Alignment
+- **Root Cause:** User requested removing the bottom navigation shortcut bar entirely from mobile screens to eliminate screen obstruction and remove overlapping third-party browser extension widgets (such as Adobe Acrobat floating buttons).
+- **Fix Applied:**
+  1. Removed `.mobile-nav-bar` from [index.html](file:///c:/Users/rahul/OneDrive/Desktop/pixelmint/index.html).
+  2. Added `.mobile-nav-bar, .mobile-nav-item { display: none !important; }` in [style.css](file:///c:/Users/rahul/OneDrive/Desktop/pixelmint/src/style.css).
+  3. Added CSS suppression for third-party injected floating extension widgets (`#adobe-acrobat-web-widget`, `[id*="adobe-acrobat"]`, etc.) and a proactive JavaScript `MutationObserver` in [main.js](file:///c:/Users/rahul/OneDrive/Desktop/pixelmint/src/main.js) that immediately removes injected floating widgets.
+  4. Normalized `.main-wrapper` and `.site-footer` bottom padding from `5.5rem` down to standard `1.5rem` / `2rem` spacing.
+  5. All mobile navigation is cleanly and reliably served by the top header hamburger menu drawer and the homepage tool directory.
+- **Retest Result:** Screen bottom is completely clean with 0 overlapping icons or bars across all mobile viewports. **PASSED**.
+
 ---
 
 ## 5. UI & Responsive Design Checklist Verification
