@@ -1588,16 +1588,15 @@ body {
 
 .footer-bottom-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  text-align: center;
   border-top: 1px solid var(--border-subtle);
   padding-top: 1.25rem;
 }
 
 .footer-copy {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--text-dim);
 }
 
