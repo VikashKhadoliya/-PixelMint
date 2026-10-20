@@ -20,6 +20,7 @@ import { renderAnalyzer } from './tools/analyzer.js';
 import { renderConverter } from './tools/converter.js';
 import { renderGifToMp4 } from './tools/gifToMp4.js';
 import { renderSvgToPng } from './tools/svgToPng.js';
+import { renderPrivacyPage, renderAboutPage, renderHelpPage, renderSitemapPage } from './tools/staticPages.js';
 
 // DOM Selectors
 const appContainer = document.querySelector('#tool-viewport');
@@ -238,6 +239,22 @@ const TOOLS = {
   svgToPng: {
     hash: 'svg-to-png',
     render: renderSvgToPng
+  },
+  privacy: {
+    hash: 'privacy',
+    render: renderPrivacyPage
+  },
+  about: {
+    hash: 'about',
+    render: renderAboutPage
+  },
+  help: {
+    hash: 'help',
+    render: renderHelpPage
+  },
+  sitemap: {
+    hash: 'sitemap',
+    render: (c) => renderSitemapPage(c, navigateToTool)
   }
 };
 
@@ -365,8 +382,8 @@ document.querySelectorAll('.sub-nav-link').forEach(btn => {
   });
 });
 
-// Handle footer tool buttons & mini quick nav
-document.querySelectorAll('.footer-tool-btn, .footer-mini-btn').forEach(btn => {
+// Handle footer tool directory buttons
+document.querySelectorAll('.footer-tool-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     if (btn.dataset.tool) {
@@ -374,6 +391,42 @@ document.querySelectorAll('.footer-tool-btn, .footer-mini-btn').forEach(btn => {
     }
   });
 });
+
+// Handle footer info links (Privacy, About, Help, Sitemap)
+document.querySelectorAll('.footer-info-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const tool = link.dataset.tool;
+    if (tool) {
+      window.location.hash = tool;
+      switchTool(tool);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+});
+
+// Footer Search Form Listener
+const footerSearchForm = document.getElementById('footer-search-form');
+const footerSearchInput = document.getElementById('footer-search-input');
+
+if (footerSearchForm && footerSearchInput) {
+  footerSearchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = footerSearchInput.value.trim();
+    if (!query) return;
+
+    // Switch to home if not already on home
+    if (activeToolName !== 'home') {
+      window.location.hash = 'home';
+      switchTool('home');
+    }
+
+    // Scroll smoothly to tools catalog and dispatch search event
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('pixelmint:search', { detail: { query } }));
+    }, 60);
+  });
+}
 
 // URL Hash routing listener
 function handleHashChange() {

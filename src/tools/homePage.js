@@ -3,7 +3,7 @@
  * Organized into searchable categories, popular shortcuts, featured tools, recent updates, and FAQs
  */
 
-export function renderHomePage(container, onNavigate) {
+export function renderHomePage(container, onNavigate, initialQuery = '') {
   const toolsData = [
     // Category: Animation & GIF Creation
     {
@@ -343,24 +343,6 @@ export function renderHomePage(container, onNavigate) {
           </div>
         </div>
 
-        <!-- Tool Search Field -->
-        <div class="hero-search-wrap">
-          <form class="search-input-form" id="home-search-form" onsubmit="return false;">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input 
-              type="text" 
-              id="home-search-input" 
-              class="search-text-input" 
-              placeholder="Search all ${toolsData.length} tools (e.g. crop, video cut, split, text, discord, svg...)" 
-              autocomplete="off"
-            />
-            <button type="submit" id="home-search-btn" class="search-submit-btn">Search</button>
-          </form>
-        </div>
-
         <!-- Popular Shortcuts -->
         <div class="popular-shortcuts-row">
           <span class="popular-label">Popular:</span>
@@ -497,23 +479,22 @@ export function renderHomePage(container, onNavigate) {
     </div>
   `;
 
-  // Attach Navigation & Search Listeners
-  const searchInput = container.querySelector('#home-search-input');
-  const searchForm = container.querySelector('#home-search-form');
+  // Attach Navigation & Category Listeners
   const toolCards = container.querySelectorAll('.tool-card');
   const countBadge = container.querySelector('#tools-count-badge');
   const catPills = container.querySelectorAll('.cat-pill');
 
   let activeCategory = 'all';
+  let activeQuery = initialQuery || '';
 
   function filterTools() {
-    const query = searchInput.value.toLowerCase().trim();
+    const query = activeQuery.toLowerCase().trim();
     let visibleCount = 0;
 
     toolCards.forEach(card => {
-      const title = card.dataset.title;
-      const tags = card.dataset.tags;
-      const cat = card.dataset.category;
+      const title = card.dataset.title || '';
+      const tags = card.dataset.tags || '';
+      const cat = card.dataset.category || '';
 
       const matchesQuery = !query || title.includes(query) || tags.includes(query);
       const matchesCat = activeCategory === 'all' || cat === activeCategory;
@@ -529,11 +510,21 @@ export function renderHomePage(container, onNavigate) {
     countBadge.textContent = `${visibleCount} of ${toolCards.length} tools`;
   }
 
-  searchInput.addEventListener('input', filterTools);
-  searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+  // Filter initially if query was supplied
+  if (activeQuery) {
     filterTools();
-  });
+  }
+
+  // Listen for search triggered from footer
+  const onGlobalSearch = (e) => {
+    activeQuery = e.detail?.query || '';
+    filterTools();
+    const catalog = container.querySelector('#all-tools-section');
+    if (catalog) {
+      catalog.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  window.addEventListener('pixelmint:search', onGlobalSearch);
 
   catPills.forEach(pill => {
     pill.addEventListener('click', () => {
