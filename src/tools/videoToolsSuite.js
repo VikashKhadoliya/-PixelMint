@@ -43,7 +43,8 @@ export function renderVideoTools(container, onChainMedia, initialMode = 'cut') {
     speed: { title: 'Video Speed Changer', badge: 'Speed', desc: 'Speed up or slow down video playback rate from 0.25x to 3x.' },
     filters: { title: 'Video Filters & Effects', badge: 'Styling', desc: 'Apply real-time color filters: Grayscale, Sepia, Invert, or Vintage pop to your video.' },
     loop: { title: 'Video Looper', badge: 'Repetition', desc: 'Repeat a video clip multiple times (2x, 3x, 4x, 5x) into an extended continuous video.' },
-    'to-images': { title: 'Video to JPG / PNG Sequence', badge: 'Extraction', desc: 'Extract video keyframes into a downloadable still image sequence or ZIP archive.' }
+    'to-images': { title: 'Video to JPG / PNG Sequence', badge: 'Extraction', desc: 'Extract video keyframes into a downloadable still image sequence or ZIP archive.' },
+    'screen-record': { title: 'Online Screen Recorder', badge: 'Capture', desc: 'Record your desktop screen, browser tab, or window directly with instant trimming and GIF export.' }
   };
 
   const meta = modeDescriptions[activeMode] || modeDescriptions.cut;
@@ -71,6 +72,7 @@ export function renderVideoTools(container, onChainMedia, initialMode = 'cut') {
           <button class="btn ${activeMode === 'filters' ? 'btn-primary' : 'btn-outline'}" data-mode="filters">Filters</button>
           <button class="btn ${activeMode === 'loop' ? 'btn-primary' : 'btn-outline'}" data-mode="loop">Loop</button>
           <button class="btn ${activeMode === 'to-images' ? 'btn-primary' : 'btn-outline'}" data-mode="to-images">to Images</button>
+          <button class="btn ${activeMode === 'screen-record' ? 'btn-primary' : 'btn-outline'}" data-mode="screen-record">Screen Record</button>
         </div>
       </div>
 
@@ -88,6 +90,9 @@ export function renderVideoTools(container, onChainMedia, initialMode = 'cut') {
           <p class="dropzone-subtext">Supports MP4, WebM, MOV. Processed directly in your browser using hardware acceleration.</p>
           <div class="dropzone-actions">
             <button class="btn btn-primary" id="vt-browse-btn">Browse Video</button>
+            <button class="btn btn-outline" id="vt-screen-rec-btn" style="border-color: #EF4444; color: #EF4444;">
+              <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#EF4444;margin-right:6px;"></span>Record Screen
+            </button>
             <button class="btn btn-secondary" id="vt-demo-btn">Generate Demo Video</button>
           </div>
         </div>
@@ -347,6 +352,53 @@ export function renderVideoTools(container, onChainMedia, initialMode = 'cut') {
   });
 
   demoBtn.addEventListener('click', generateDemoVideo);
+
+  const screenRecBtn = container.querySelector('#vt-screen-rec-btn');
+  if (screenRecBtn) {
+    screenRecBtn.addEventListener('click', async () => {
+      try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
+          alert('Screen recording is not supported in this browser.');
+          return;
+        }
+        const stream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true });
+        const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+        const chunks = [];
+        
+        screenRecBtn.innerHTML = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#EF4444;margin-right:6px;"></span>🔴 Stop Recording';
+        screenRecBtn.style.background = 'rgba(239, 68, 68, 0.2)';
+
+        mediaRecorder.ondataavailable = (e) => {
+          if (e.data.size > 0) chunks.push(e.data);
+        };
+
+        const stopRecording = () => {
+          if (mediaRecorder.state !== 'inactive') {
+            mediaRecorder.stop();
+          }
+          stream.getTracks().forEach(t => t.stop());
+        };
+
+        stream.getVideoTracks()[0].onended = stopRecording;
+
+        screenRecBtn.onclick = () => {
+          stopRecording();
+        };
+
+        mediaRecorder.onstop = () => {
+          const recordedBlob = new Blob(chunks, { type: 'video/webm' });
+          const recFile = new File([recordedBlob], 'screen-recording.webm', { type: 'video/webm' });
+          loadVideo(recFile);
+          screenRecBtn.innerHTML = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#EF4444;margin-right:6px;"></span>Record Screen';
+          screenRecBtn.style.background = '';
+        };
+
+        mediaRecorder.start();
+      } catch (err) {
+        console.warn('Screen recording cancelled or error:', err);
+      }
+    });
+  }
 
   // Parameter bindings
   const cutStartInp = container.querySelector('#vt-cut-start');

@@ -240,6 +240,26 @@ const TOOLS = {
     hash: 'svg-to-png',
     render: renderSvgToPng
   },
+  webp: {
+    hash: 'webp',
+    render: (c, chain) => renderConverter(c, chain, 'webp')
+  },
+  apng: {
+    hash: 'apng',
+    render: (c, chain) => renderConverter(c, chain, 'png')
+  },
+  avif: {
+    hash: 'avif',
+    render: (c, chain) => renderConverter(c, chain, 'avif')
+  },
+  jxl: {
+    hash: 'jxl',
+    render: (c, chain) => renderConverter(c, chain, 'jxl')
+  },
+  screenRecorder: {
+    hash: 'screen-recorder',
+    render: (c, chain) => renderVideoTools(c, chain, 'screen-record')
+  },
   privacy: {
     hash: 'privacy',
     render: renderPrivacyPage
@@ -313,9 +333,47 @@ function switchTool(toolKey) {
   // Update hash
   window.location.hash = TOOLS[toolKey].hash;
 
+  // Map child tools to parent header tab
+  const tabCategoryMap = {
+    gifMaker: 'gifMaker',
+    videoToGif: 'gifMaker',
+    videoTools: 'videoTools',
+    cutVideo: 'cutVideo',
+    resizeVideo: 'videoTools',
+    cropVideo: 'videoTools',
+    rotateVideo: 'videoTools',
+    videoSpeed: 'videoTools',
+    videoFilters: 'videoTools',
+    loopVideo: 'videoTools',
+    videoToJpg: 'videoTools',
+    screenRecorder: 'videoTools',
+    resizer: 'resizer',
+    cropper: 'resizer',
+    rotate: 'resizer',
+    reverse: 'resizer',
+    speed: 'resizer',
+    cut: 'resizer',
+    optimizer: 'optimizer',
+    targetSizeCompressor: 'optimizer',
+    discord8mb: 'optimizer',
+    effects: 'effects',
+    splitter: 'splitter',
+    spriteSheet: 'splitter',
+    spriteCutter: 'splitter',
+    addText: 'addText',
+    whiteBoxCaption: 'addText',
+    converter: 'webp',
+    webp: 'webp',
+    apng: 'apng',
+    avif: 'avif',
+    jxl: 'jxl',
+    svgToPng: 'svgToPng'
+  };
+  const primaryTab = tabCategoryMap[toolKey] || toolKey;
+
   // Update desktop navigation active states
   navTabButtons.forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.tool === toolKey);
+    btn.classList.toggle('active', btn.dataset.tool === toolKey || btn.dataset.tool === primaryTab);
   });
 
   // Update mobile bottom bar active states

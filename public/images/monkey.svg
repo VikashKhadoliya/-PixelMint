@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+  <!-- Monkey Silhouette Mascot for Subnav -->
+  <path d="M12 4C7.58 4 4 7.58 4 12C4 14.5 5.15 16.73 6.96 18.2C6.98 18.78 7.21 20.35 6.5 21C8.2 21 9.8 20.2 10.6 19.6C11.05 19.85 11.51 20 12 20C16.42 20 20 16.42 20 12C20 7.58 16.42 4 12 4Z" fill="#CBD5E1"/>
+  <!-- Left Ear -->
+  <circle cx="4" cy="11" r="3" fill="#94A3B8"/>
+  <circle cx="4" cy="11" r="1.8" fill="#F1F5F9"/>
+  <!-- Right Ear -->
+  <circle cx="20" cy="11" r="3" fill="#94A3B8"/>
+  <circle cx="20" cy="11" r="1.8" fill="#F1F5F9"/>
+  <!-- Face Muzzle -->
+  <ellipse cx="12" cy="14" rx="5.5" ry="4" fill="#F1F5F9"/>
+  <!-- Eyes -->
+  <circle cx="9.5" cy="10" r="1.5" fill="#0F172A"/>
+  <circle cx="14.5" cy="10" r="1.5" fill="#0F172A"/>
+  <circle cx="10" cy="9.5" r="0.5" fill="#FFFFFF"/>
+  <circle cx="15" cy="9.5" r="0.5" fill="#FFFFFF"/>
+  <!-- Nose & Smile -->
+  <ellipse cx="12" cy="13.2" rx="1.2" ry="0.8" fill="#E53935"/>
+  <path d="M10.2 15C10.8 16 13.2 16 13.8 15" stroke="#0F172A" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
