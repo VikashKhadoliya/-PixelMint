@@ -443,14 +443,14 @@ async function createDemoVideoBlob() {
 
   recorder.start();
 
-  // Render 60 animated frames (2 seconds @ 30fps)
-  for (let frame = 0; frame < 60; frame++) {
+  // Render 15 animated frames (0.5 seconds @ 30fps for snappy demo)
+  for (let frame = 0; frame < 15; frame++) {
     // Dark background
     ctx.fillStyle = '#0f172a';
     ctx.fillRect(0, 0, 400, 300);
 
     // Dynamic gradient waves
-    const angle = (frame / 60) * Math.PI * 2;
+    const angle = (frame / 15) * Math.PI * 2;
     const grad = ctx.createRadialGradient(200, 150, 10, 200, 150, 180);
     grad.addColorStop(0, '#10b981');
     grad.addColorStop(0.5, '#6366f1');

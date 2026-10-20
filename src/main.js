@@ -31,6 +31,8 @@ const brandLogo = document.querySelector('.brand-logo');
 const themeToggleBtn = document.querySelector('#theme-toggle-btn');
 const mobileMenuBtn = document.querySelector('#mobile-menu-btn');
 const mobileDrawer = document.querySelector('#mobile-drawer');
+const drawerBackdrop = document.querySelector('#drawer-backdrop');
+const drawerCloseBtn = document.querySelector('#drawer-close-btn');
 
 let activeToolName = 'home';
 let toolInstances = {};
@@ -76,7 +78,7 @@ if (window.matchMedia) {
 initTheme();
 
 // ============================================================================
-// Mobile Drawer Controller
+// Mobile Drawer Controller (Reliable Open/Close, Backdrop, & Independent Scroll)
 // ============================================================================
 function toggleMobileDrawer(forceState) {
   if (!mobileDrawer) return;
@@ -86,24 +88,46 @@ function toggleMobileDrawer(forceState) {
   if (shouldOpen) {
     mobileDrawer.classList.remove('hidden');
     mobileDrawer.setAttribute('aria-hidden', 'false');
+    if (drawerBackdrop) {
+      drawerBackdrop.classList.remove('hidden');
+      drawerBackdrop.setAttribute('aria-hidden', 'false');
+    }
+    if (mobileMenuBtn) {
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    }
+    document.body.classList.add('drawer-open');
   } else {
     mobileDrawer.classList.add('hidden');
     mobileDrawer.setAttribute('aria-hidden', 'true');
+    if (drawerBackdrop) {
+      drawerBackdrop.classList.add('hidden');
+      drawerBackdrop.setAttribute('aria-hidden', 'true');
+    }
+    if (mobileMenuBtn) {
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+    document.body.classList.remove('drawer-open');
   }
 }
 
 if (mobileMenuBtn) {
-  mobileMenuBtn.addEventListener('click', () => toggleMobileDrawer());
+  mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobileDrawer();
+  });
 }
 
-// Close drawer when clicking outside
-document.addEventListener('click', (e) => {
-  if (mobileDrawer && !mobileDrawer.classList.contains('hidden')) {
-    if (!mobileDrawer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-      toggleMobileDrawer(false);
-    }
-  }
-});
+if (drawerCloseBtn) {
+  drawerCloseBtn.addEventListener('click', () => {
+    toggleMobileDrawer(false);
+  });
+}
+
+if (drawerBackdrop) {
+  drawerBackdrop.addEventListener('click', () => {
+    toggleMobileDrawer(false);
+  });
+}
 
 // Close drawer on Escape key
 document.addEventListener('keydown', (e) => {
@@ -333,6 +357,51 @@ function switchTool(toolKey) {
   // Update hash
   window.location.hash = TOOLS[toolKey].hash;
 
+  // Dynamic Page Title
+  const toolTitles = {
+    home: 'PixelMint — Free Online Image & Animated GIF Toolkit',
+    gifMaker: 'GIF Maker — Create Animated GIFs Online | PixelMint',
+    videoToGif: 'Video to GIF Converter — MP4, WebM to Animated GIF | PixelMint',
+    videoTools: 'Online Video Editor & Tools Suite | PixelMint',
+    cutVideo: 'Online Video Cutter & Trimmer | PixelMint',
+    resizeVideo: 'Online Video Resizer | PixelMint',
+    cropVideo: 'Online Video Cropper | PixelMint',
+    rotateVideo: 'Rotate & Flip Video Online | PixelMint',
+    videoSpeed: 'Video Speed Multiplier | PixelMint',
+    videoFilters: 'Video Color Filters & Effects | PixelMint',
+    loopVideo: 'Video Looper Online | PixelMint',
+    videoToJpg: 'Video to JPG / PNG Sequence | PixelMint',
+    screenRecorder: 'Online Screen Recorder & GIF Capture | PixelMint',
+    resizer: 'Image & GIF Resizer — Scale Images Online | PixelMint',
+    cropper: 'Image & GIF Cropper — Crop Online | PixelMint',
+    optimizer: 'GIF Optimizer — Compress & Reduce GIF Size | PixelMint',
+    targetSizeCompressor: 'Target Size GIF Compressor (Discord 8MB) | PixelMint',
+    discord8mb: 'Discord 8MB GIF Compressor | PixelMint',
+    effects: 'Effects Studio — Adjust Color & Filters | PixelMint',
+    rotate: 'Rotate & Flip Image or GIF Online | PixelMint',
+    reverse: 'Reverse GIF — Play GIF Backwards | PixelMint',
+    speed: 'Change GIF Animation Speed | PixelMint',
+    cut: 'Cut GIF Animation Duration | PixelMint',
+    addText: 'Add Text to GIF & Images | PixelMint',
+    whiteBoxCaption: 'White Box Caption Meme Maker | PixelMint',
+    splitter: 'GIF Frame Splitter — Extract Frames to ZIP | PixelMint',
+    spriteSheet: 'GIF to Sprite Sheet Generator | PixelMint',
+    spriteCutter: 'Sprite Sheet Tile Cutter | PixelMint',
+    analyzer: 'GIF Analyzer — Inspect Structure & Header Specs | PixelMint',
+    converter: 'Batch Image Format Converter | PixelMint',
+    gifToMp4: 'GIF to MP4 & WebM Video Converter | PixelMint',
+    svgToPng: 'SVG to PNG Converter — High-DPI Vector Rasterizer | PixelMint',
+    webp: 'WebP to GIF & Image Converter | PixelMint',
+    apng: 'APNG to GIF & Image Converter | PixelMint',
+    avif: 'AVIF to GIF & Image Converter | PixelMint',
+    jxl: 'JXL to GIF & Image Converter | PixelMint',
+    privacy: 'Privacy & Cookies Policy | PixelMint',
+    about: 'About & Contact | PixelMint',
+    help: 'Help & FAQ | PixelMint',
+    sitemap: 'HTML Sitemap — All Tools & Utilities | PixelMint'
+  };
+  document.title = toolTitles[toolKey] || 'PixelMint — Free Online Image & Animated GIF Toolkit';
+
   // Map child tools to parent header tab
   const tabCategoryMap = {
     gifMaker: 'gifMaker',
@@ -376,9 +445,39 @@ function switchTool(toolKey) {
     btn.classList.toggle('active', btn.dataset.tool === toolKey || btn.dataset.tool === primaryTab);
   });
 
-  // Update mobile bottom bar active states
+  // Update mobile bottom bar active states (mapped to 6 core shortcuts)
+  const bottomCategoryMap = {
+    home: 'home',
+    about: 'home',
+    privacy: 'home',
+    help: 'home',
+    sitemap: 'home',
+    gifMaker: 'gifMaker',
+    videoToGif: 'videoToGif',
+    videoTools: 'videoToGif',
+    cutVideo: 'videoToGif',
+    resizeVideo: 'videoToGif',
+    cropVideo: 'videoToGif',
+    rotateVideo: 'videoToGif',
+    videoSpeed: 'videoToGif',
+    videoFilters: 'videoToGif',
+    loopVideo: 'videoToGif',
+    videoToJpg: 'videoToGif',
+    screenRecorder: 'videoToGif',
+    gifToMp4: 'videoToGif',
+    resizer: 'resizer',
+    rotate: 'resizer',
+    reverse: 'resizer',
+    speed: 'resizer',
+    cut: 'resizer',
+    cropper: 'cropper',
+    optimizer: 'optimizer',
+    targetSizeCompressor: 'optimizer',
+    discord8mb: 'optimizer'
+  };
+  const activeBottomTool = bottomCategoryMap[toolKey] || toolKey;
   mobileNavItems.forEach(item => {
-    item.classList.toggle('active', item.dataset.tool === toolKey);
+    item.classList.toggle('active', item.dataset.tool === toolKey || item.dataset.tool === activeBottomTool);
   });
 
   // Update mobile drawer active states
@@ -413,6 +512,7 @@ navTabButtons.forEach(btn => {
 
 mobileNavItems.forEach(item => {
   item.addEventListener('click', () => {
+    toggleMobileDrawer(false);
     switchTool(item.dataset.tool);
   });
 });
@@ -420,6 +520,7 @@ mobileNavItems.forEach(item => {
 drawerLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
+    toggleMobileDrawer(false);
     switchTool(link.dataset.tool);
   });
 });

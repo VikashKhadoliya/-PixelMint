@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <!-- Primary Meta Tags -->
   <title>PixelMint — Free Online Image & Animated GIF Toolkit</title>
@@ -182,78 +182,113 @@
     </nav>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div id="mobile-drawer" class="mobile-drawer hidden" aria-hidden="true">
-    <button class="mobile-drawer-link active" data-tool="home">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-      </svg>
-      Home
-    </button>
-    <button class="mobile-drawer-link" data-tool="gifMaker">
-      <img src="/icons/tool-animator.png" alt="" width="18" height="18" /> GIF Maker
-    </button>
-    <button class="mobile-drawer-link" data-tool="videoTools">
-      <img src="/icons/camera-video.png" alt="" width="18" height="18" /> Video Tools Suite
-    </button>
-    <button class="mobile-drawer-link" data-tool="videoToGif">
-      <img src="/icons/hero-video-to-gif.png" alt="" width="18" height="18" /> Video to GIF
-    </button>
-    <button class="mobile-drawer-link" data-tool="screenRecorder">
-      <img src="/icons/media-record.png" alt="" width="18" height="18" /> Screen Recorder
-    </button>
-    <button class="mobile-drawer-link" data-tool="resizer">
-      <img src="/icons/transform-scale.png" alt="" width="18" height="18" /> Image Resizer
-    </button>
-    <button class="mobile-drawer-link" data-tool="cropper">
-      <img src="/icons/transform-crop.png" alt="" width="18" height="18" /> Image Cropper
-    </button>
-    <button class="mobile-drawer-link" data-tool="optimizer">
-      <img src="/icons/speedometer.png" alt="" width="18" height="18" /> GIF Optimizer
-    </button>
-    <button class="mobile-drawer-link" data-tool="targetSizeCompressor">
-      <img src="/icons/utilities-file-archiver.png" alt="" width="18" height="18" /> Discord 8MB Compressor
-    </button>
-    <button class="mobile-drawer-link" data-tool="effects">
-      <img src="/icons/tools-wizard.png" alt="" width="18" height="18" /> Effects Studio
-    </button>
-    <button class="mobile-drawer-link" data-tool="rotate">
-      <img src="/icons/object-rotate-right.png" alt="" width="18" height="18" /> Rotate &amp; Flip
-    </button>
-    <button class="mobile-drawer-link" data-tool="reverse">
-      <img src="/icons/media-seek-backward.png" alt="" width="18" height="18" /> Reverse GIF
-    </button>
-    <button class="mobile-drawer-link" data-tool="speed">
-      <img src="/icons/chronometer.png" alt="" width="18" height="18" /> Speed Changer
-    </button>
-    <button class="mobile-drawer-link" data-tool="cutVideo">
-      <img src="/icons/player-volume.png" alt="" width="18" height="18" /> Video Audio / Cutter
-    </button>
-    <button class="mobile-drawer-link" data-tool="addText">
-      <img src="/icons/draw-text.png" alt="" width="18" height="18" /> Add Text
-    </button>
-    <button class="mobile-drawer-link" data-tool="whiteBoxCaption">
-      <img src="/icons/draw-bezier-curves.png" alt="" width="18" height="18" /> Meme Caption Maker
-    </button>
-    <button class="mobile-drawer-link" data-tool="splitter">
-      <img src="/icons/split.png" alt="" width="18" height="18" /> GIF Frame Splitter (ZIP)
-    </button>
-    <button class="mobile-drawer-link" data-tool="spriteSheet">
-      <img src="/icons/view-grid.png" alt="" width="18" height="18" /> Sprite Sheet Studio
-    </button>
-    <button class="mobile-drawer-link" data-tool="analyzer">
-      <img src="/icons/view-statistics.png" alt="" width="18" height="18" /> GIF Analyzer
-    </button>
-    <button class="mobile-drawer-link" data-tool="gifToMp4">
-      <img src="/icons/document-export.png" alt="" width="18" height="18" /> GIF to MP4 Video
-    </button>
-    <button class="mobile-drawer-link" data-tool="svgToPng">
-      <img src="/icons/image-svg+xml.png" alt="" width="18" height="18" /> SVG to PNG
-    </button>
-    <button class="mobile-drawer-link" data-tool="converter">
-      <img src="/icons/view-refresh.png" alt="" width="18" height="18" /> Format Converter
-    </button>
+  <!-- Mobile Drawer Backdrop & Drawer -->
+  <div id="drawer-backdrop" class="drawer-backdrop hidden" aria-hidden="true"></div>
+  <div id="mobile-drawer" class="mobile-drawer hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Tool Navigation Menu">
+    <div class="mobile-drawer-header">
+      <div class="drawer-brand">
+        <img src="/images/monkey-editor.gif" alt="" width="26" height="26" class="drawer-monkey" />
+        <span class="drawer-title">All Tools &amp; Navigation</span>
+      </div>
+      <button id="drawer-close-btn" class="drawer-close-btn" type="button" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-scroll-body">
+      <div class="drawer-section-label">Core Workstations</div>
+      <button class="mobile-drawer-link active" data-tool="home">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        Home &amp; All Tools
+      </button>
+      <button class="mobile-drawer-link" data-tool="gifMaker">
+        <img src="/icons/tool-animator.png" alt="" width="18" height="18" /> GIF Maker
+      </button>
+      <button class="mobile-drawer-link" data-tool="videoToGif">
+        <img src="/icons/hero-video-to-gif.png" alt="" width="18" height="18" /> Video to GIF
+      </button>
+      <button class="mobile-drawer-link" data-tool="videoTools">
+        <img src="/icons/camera-video.png" alt="" width="18" height="18" /> Video Tools Suite
+      </button>
+      <button class="mobile-drawer-link" data-tool="screenRecorder">
+        <img src="/icons/media-record.png" alt="" width="18" height="18" /> Screen Recorder
+      </button>
+      <button class="mobile-drawer-link" data-tool="resizer">
+        <img src="/icons/transform-scale.png" alt="" width="18" height="18" /> Image &amp; GIF Resizer
+      </button>
+      <button class="mobile-drawer-link" data-tool="cropper">
+        <img src="/icons/transform-crop.png" alt="" width="18" height="18" /> Image &amp; GIF Cropper
+      </button>
+      <button class="mobile-drawer-link" data-tool="optimizer">
+        <img src="/icons/speedometer.png" alt="" width="18" height="18" /> GIF Optimizer
+      </button>
+      <button class="mobile-drawer-link" data-tool="targetSizeCompressor">
+        <img src="/icons/utilities-file-archiver.png" alt="" width="18" height="18" /> Discord 8MB Compressor
+      </button>
+      <button class="mobile-drawer-link" data-tool="effects">
+        <img src="/icons/tools-wizard.png" alt="" width="18" height="18" /> Effects Studio
+      </button>
+
+      <div class="drawer-section-label">Transform &amp; Edit</div>
+      <button class="mobile-drawer-link" data-tool="rotate">
+        <img src="/icons/object-rotate-right.png" alt="" width="18" height="18" /> Rotate &amp; Flip
+      </button>
+      <button class="mobile-drawer-link" data-tool="reverse">
+        <img src="/icons/media-seek-backward.png" alt="" width="18" height="18" /> Reverse GIF
+      </button>
+      <button class="mobile-drawer-link" data-tool="speed">
+        <img src="/icons/chronometer.png" alt="" width="18" height="18" /> Speed Changer
+      </button>
+      <button class="mobile-drawer-link" data-tool="cutVideo">
+        <img src="/icons/player-volume.png" alt="" width="18" height="18" /> Video Audio / Cutter
+      </button>
+      <button class="mobile-drawer-link" data-tool="addText">
+        <img src="/icons/draw-text.png" alt="" width="18" height="18" /> Add Text
+      </button>
+      <button class="mobile-drawer-link" data-tool="whiteBoxCaption">
+        <img src="/icons/draw-bezier-curves.png" alt="" width="18" height="18" /> Meme Caption Maker
+      </button>
+
+      <div class="drawer-section-label">Extract &amp; Convert</div>
+      <button class="mobile-drawer-link" data-tool="splitter">
+        <img src="/icons/split.png" alt="" width="18" height="18" /> GIF Frame Splitter (ZIP)
+      </button>
+      <button class="mobile-drawer-link" data-tool="spriteSheet">
+        <img src="/icons/view-grid.png" alt="" width="18" height="18" /> Sprite Sheet Studio
+      </button>
+      <button class="mobile-drawer-link" data-tool="analyzer">
+        <img src="/icons/view-statistics.png" alt="" width="18" height="18" /> GIF Analyzer
+      </button>
+      <button class="mobile-drawer-link" data-tool="gifToMp4">
+        <img src="/icons/document-export.png" alt="" width="18" height="18" /> GIF to MP4 Video
+      </button>
+      <button class="mobile-drawer-link" data-tool="svgToPng">
+        <img src="/icons/image-svg+xml.png" alt="" width="18" height="18" /> SVG to PNG
+      </button>
+      <button class="mobile-drawer-link" data-tool="converter">
+        <img src="/icons/view-refresh.png" alt="" width="18" height="18" /> Format Converter
+      </button>
+
+      <div class="drawer-section-label">Information &amp; Help</div>
+      <button class="mobile-drawer-link" data-tool="help">
+        <img src="/icons/help-browser.svg" alt="" width="18" height="18" /> Help / FAQ
+      </button>
+      <button class="mobile-drawer-link" data-tool="about">
+        <img src="/icons/help-about.svg" alt="" width="18" height="18" /> About PixelMint
+      </button>
+      <button class="mobile-drawer-link" data-tool="privacy">
+        <img src="/icons/security-high.svg" alt="" width="18" height="18" /> Privacy &amp; Cookies
+      </button>
+      <button class="mobile-drawer-link" data-tool="sitemap">
+        <img src="/icons/view-list-tree.svg" alt="" width="18" height="18" /> Sitemap
+      </button>
+    </div>
   </div>
 
   <!-- Main Content Stage -->
@@ -262,42 +297,34 @@
     <div id="tool-viewport"></div>
   </main>
 
-  <!-- Mobile Bottom Navigation Bar -->
+  <!-- Mobile Bottom Navigation Bar (5-7 Core Shortcuts) -->
   <nav class="mobile-nav-bar" aria-label="Mobile Bottom Navigation">
-    <button class="mobile-nav-item active" data-tool="home">
+    <button class="mobile-nav-item active" data-tool="home" aria-label="Home and All Tools">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="mobile-nav-icon">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
         <polyline points="9 22 9 12 15 12 15 22"></polyline>
       </svg>
       <span>Home</span>
     </button>
-    <button class="mobile-nav-item" data-tool="gifMaker">
+    <button class="mobile-nav-item" data-tool="gifMaker" aria-label="GIF Maker">
       <img src="/icons/tool-animator.png" alt="" class="mobile-nav-icon" width="20" height="20" />
       <span>Maker</span>
     </button>
-    <button class="mobile-nav-item" data-tool="videoTools">
+    <button class="mobile-nav-item" data-tool="videoToGif" aria-label="Video to GIF">
       <img src="/icons/camera-video.png" alt="" class="mobile-nav-icon" width="20" height="20" />
       <span>Video</span>
     </button>
-    <button class="mobile-nav-item" data-tool="resizer">
+    <button class="mobile-nav-item" data-tool="resizer" aria-label="Image & GIF Resizer">
       <img src="/icons/transform-scale.png" alt="" class="mobile-nav-icon" width="20" height="20" />
       <span>Resize</span>
     </button>
-    <button class="mobile-nav-item" data-tool="cropper">
+    <button class="mobile-nav-item" data-tool="cropper" aria-label="Image & GIF Cropper">
       <img src="/icons/transform-crop.png" alt="" class="mobile-nav-icon" width="20" height="20" />
       <span>Crop</span>
     </button>
-    <button class="mobile-nav-item" data-tool="optimizer">
+    <button class="mobile-nav-item" data-tool="optimizer" aria-label="GIF Optimizer">
       <img src="/icons/speedometer.png" alt="" class="mobile-nav-icon" width="20" height="20" />
       <span>Optimize</span>
-    </button>
-    <button class="mobile-nav-item" data-tool="splitter">
-      <img src="/icons/split.png" alt="" class="mobile-nav-icon" width="20" height="20" />
-      <span>Split</span>
-    </button>
-    <button class="mobile-nav-item" data-tool="converter">
-      <img src="/icons/view-refresh.png" alt="" class="mobile-nav-icon" width="20" height="20" />
-      <span>Convert</span>
     </button>
   </nav>
 

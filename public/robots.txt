@@ -1,0 +1,5 @@
+# PixelMint Media Suite robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://pixelmint.com/sitemap.xml
