@@ -1706,11 +1706,110 @@ body {
     padding: 0.45rem 0.85rem;
     font-size: 0.8rem;
   }
-  .popular-shortcuts-row {
-    gap: 0.35rem;
-  }
   .shortcut-pill {
     font-size: 0.75rem;
     padding: 0.2rem 0.5rem;
   }
 }
+
+/* ==========================================================================
+   Category Pills & Extended Tool Component Styles
+   ========================================================================== */
+.category-pills-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+
+.cat-pill {
+  padding: 6px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.cat-pill:hover {
+  border-color: var(--brand-red-border);
+  color: var(--text-main);
+}
+
+.cat-pill.active {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+  color: #FFFFFF;
+}
+
+/* Analysis Stats Grid */
+.analysis-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.stat-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: var(--font-display);
+}
+
+.stat-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Data Table */
+.data-table th {
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  color: var(--text-main);
+}
+
+.data-table tr:hover td {
+  background: rgba(229, 57, 53, 0.04);
+}
+
+/* Active state for sub-tabs and buttons */
+.rot-btn.active, .vt-rot-btn.active, .vt-filter-btn.active {
+  background: var(--brand-red) !important;
+  border-color: var(--brand-red) !important;
+  color: #FFFFFF !important;
+}
+
+.tool-hero-icon-svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+

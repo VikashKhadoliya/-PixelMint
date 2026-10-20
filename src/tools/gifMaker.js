@@ -48,6 +48,8 @@ export function renderGifMaker(container, onChainMedia) {
           <h3>Frame Sequence (<span id="gm-frame-count">0</span> frames)</h3>
           <div class="stage-actions">
             <button class="btn btn-sm btn-outline" id="gm-add-more-btn">+ Add More</button>
+            <button class="btn btn-sm btn-outline" id="gm-skip-2nd-btn" title="Drop every second frame">Skip 2nd</button>
+            <button class="btn btn-sm btn-outline" id="gm-skip-3rd-btn" title="Drop 2 of every 3 frames">Skip 3rd</button>
             <button class="btn btn-sm btn-danger-outline" id="gm-clear-btn">Clear All</button>
           </div>
         </div>
@@ -92,6 +94,14 @@ export function renderGifMaker(container, onChainMedia) {
               <label for="gm-loop">Loop Count</label>
               <input type="number" id="gm-loop" min="0" value="0" class="num-input" placeholder="0 = infinite" />
               <small class="form-hint">0 = loop forever</small>
+            </div>
+
+            <div class="form-group checkbox-group" style="margin-top: 10px;">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="gm-crossfade" />
+                <span class="checkbox-mark"></span>
+                Crossfade Transitions (Blends frames)
+              </label>
             </div>
           </div>
 
@@ -144,7 +154,11 @@ export function renderGifMaker(container, onChainMedia) {
               <button class="chain-btn" data-tool="resizer"><img src="/icons/transform-scale.svg" class="chain-btn-icon" alt="" /> Resize</button>
               <button class="chain-btn" data-tool="optimizer"><img src="/icons/speedometer.svg" class="chain-btn-icon" alt="" /> Optimize</button>
               <button class="chain-btn" data-tool="effects"><img src="/icons/tools-wizard.svg" class="chain-btn-icon" alt="" /> Effects</button>
-              <button class="chain-btn" data-tool="converter"><img src="/icons/view-refresh.svg" class="chain-btn-icon" alt="" /> Convert</button>
+              <button class="chain-btn" data-tool="splitter">Split</button>
+              <button class="chain-btn" data-tool="addText">Add Text</button>
+              <button class="chain-btn" data-tool="whiteBoxCaption">Meme Caption</button>
+              <button class="chain-btn" data-tool="gifToMp4">to MP4 Video</button>
+              <button class="chain-btn" data-tool="analyzer">Analyze</button>
             </div>
           </div>
         </div>
@@ -228,6 +242,25 @@ export function renderGifMaker(container, onChainMedia) {
     renderFrameList();
     outputWrap.classList.add('hidden');
   });
+
+  const skip2ndBtn = container.querySelector('#gm-skip-2nd-btn');
+  const skip3rdBtn = container.querySelector('#gm-skip-3rd-btn');
+  if (skip2ndBtn) {
+    skip2ndBtn.addEventListener('click', () => {
+      if (frames.length > 2) {
+        frames = frames.filter((_, idx) => idx % 2 === 0);
+        renderFrameList();
+      }
+    });
+  }
+  if (skip3rdBtn) {
+    skip3rdBtn.addEventListener('click', () => {
+      if (frames.length > 3) {
+        frames = frames.filter((_, idx) => idx % 3 === 0);
+        renderFrameList();
+      }
+    });
+  }
 
   // Delay & FPS bi-directional sync
   function updateFps() {
@@ -357,11 +390,33 @@ export function renderGifMaker(container, onChainMedia) {
         };
       });
 
+      // Handle Crossfade transitions if enabled
+      const isCrossfade = container.querySelector('#gm-crossfade')?.checked;
+      let finalFrames = canvasFrames;
+      if (isCrossfade && canvasFrames.length > 1) {
+        const blended = [];
+        for (let i = 0; i < canvasFrames.length; i++) {
+          blended.push(canvasFrames[i]);
+          const next = canvasFrames[(i + 1) % canvasFrames.length];
+          // Create 1 intermediate 50% crossfade frame
+          const blendCanvas = document.createElement('canvas');
+          blendCanvas.width = maxWidth;
+          blendCanvas.height = maxHeight;
+          const bCtx = blendCanvas.getContext('2d');
+          bCtx.drawImage(canvasFrames[i].canvas, 0, 0);
+          bCtx.globalAlpha = 0.5;
+          bCtx.drawImage(next.canvas, 0, 0);
+          bCtx.globalAlpha = 1.0;
+          blended.push({ canvas: blendCanvas, delay: Math.max(20, Math.round(canvasFrames[i].delay / 2)) });
+        }
+        finalFrames = blended;
+      }
+
       const maxColors = parseInt(colorsSelect.value, 10);
       const dither = ditherSelect.value;
       const loop = parseInt(loopInput.value, 10) || 0;
 
-      const blob = await encodeGif(canvasFrames, {
+      const blob = await encodeGif(finalFrames, {
         maxColors,
         dither,
         loop,

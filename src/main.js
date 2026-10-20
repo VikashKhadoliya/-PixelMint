@@ -5,11 +5,21 @@ import './style.css';
 import { renderHomePage } from './tools/homePage.js';
 import { renderGifMaker } from './tools/gifMaker.js';
 import { renderVideoToGif } from './tools/videoToGif.js';
+import { renderVideoTools } from './tools/videoToolsSuite.js';
 import { renderResizer } from './tools/resizer.js';
 import { renderCropper } from './tools/cropper.js';
 import { renderOptimizer } from './tools/optimizer.js';
+import { renderTargetSizeCompressor } from './tools/targetSizeCompressor.js';
 import { renderEffects } from './tools/effects.js';
+import { renderTransformTool } from './tools/transformSuite.js';
+import { renderAddText } from './tools/addText.js';
+import { renderWhiteBoxCaption } from './tools/whiteBoxCaption.js';
+import { renderSplitter } from './tools/splitter.js';
+import { renderSpriteSheet } from './tools/spriteSheet.js';
+import { renderAnalyzer } from './tools/analyzer.js';
 import { renderConverter } from './tools/converter.js';
+import { renderGifToMp4 } from './tools/gifToMp4.js';
+import { renderSvgToPng } from './tools/svgToPng.js';
 
 // DOM Selectors
 const appContainer = document.querySelector('#tool-viewport');
@@ -52,7 +62,7 @@ if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', toggleTheme);
 }
 
-// Listen to system changes if user hasn't explicitly set a preference
+// System color-scheme listener
 if (window.matchMedia) {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem('pixelmint_theme')) {
@@ -117,6 +127,42 @@ const TOOLS = {
     hash: 'video-to-gif',
     render: renderVideoToGif
   },
+  videoTools: {
+    hash: 'video-tools',
+    render: (c, chain) => renderVideoTools(c, chain, 'cut')
+  },
+  cutVideo: {
+    hash: 'cut-video',
+    render: (c, chain) => renderVideoTools(c, chain, 'cut')
+  },
+  resizeVideo: {
+    hash: 'resize-video',
+    render: (c, chain) => renderVideoTools(c, chain, 'resize')
+  },
+  cropVideo: {
+    hash: 'crop-video',
+    render: (c, chain) => renderVideoTools(c, chain, 'crop')
+  },
+  rotateVideo: {
+    hash: 'rotate-video',
+    render: (c, chain) => renderVideoTools(c, chain, 'rotate')
+  },
+  videoSpeed: {
+    hash: 'video-speed',
+    render: (c, chain) => renderVideoTools(c, chain, 'speed')
+  },
+  videoFilters: {
+    hash: 'video-filters',
+    render: (c, chain) => renderVideoTools(c, chain, 'filters')
+  },
+  loopVideo: {
+    hash: 'loop-video',
+    render: (c, chain) => renderVideoTools(c, chain, 'loop')
+  },
+  videoToJpg: {
+    hash: 'video-to-jpg',
+    render: (c, chain) => renderVideoTools(c, chain, 'to-images')
+  },
   resizer: {
     hash: 'resize',
     render: renderResizer
@@ -129,13 +175,69 @@ const TOOLS = {
     hash: 'optimize',
     render: renderOptimizer
   },
+  targetSizeCompressor: {
+    hash: 'target-size-compressor',
+    render: renderTargetSizeCompressor
+  },
+  discord8mb: {
+    hash: 'discord-8mb',
+    render: renderTargetSizeCompressor
+  },
   effects: {
     hash: 'effects',
     render: renderEffects
   },
+  rotate: {
+    hash: 'rotate',
+    render: (c, chain) => renderTransformTool(c, chain, 'rotate')
+  },
+  reverse: {
+    hash: 'reverse',
+    render: (c, chain) => renderTransformTool(c, chain, 'reverse')
+  },
+  speed: {
+    hash: 'speed',
+    render: (c, chain) => renderTransformTool(c, chain, 'speed')
+  },
+  cut: {
+    hash: 'cut',
+    render: (c, chain) => renderTransformTool(c, chain, 'cut')
+  },
+  addText: {
+    hash: 'add-text',
+    render: renderAddText
+  },
+  whiteBoxCaption: {
+    hash: 'white-box-caption',
+    render: renderWhiteBoxCaption
+  },
+  splitter: {
+    hash: 'split',
+    render: renderSplitter
+  },
+  spriteSheet: {
+    hash: 'gif-to-sprite',
+    render: (c, chain) => renderSpriteSheet(c, chain, 'generator')
+  },
+  spriteCutter: {
+    hash: 'sprite-cutter',
+    render: (c, chain) => renderSpriteSheet(c, chain, 'cutter')
+  },
+  analyzer: {
+    hash: 'analyzer',
+    render: renderAnalyzer
+  },
   converter: {
     hash: 'converter',
     render: renderConverter
+  },
+  gifToMp4: {
+    hash: 'gif-to-mp4',
+    render: renderGifToMp4
+  },
+  svgToPng: {
+    hash: 'svg-to-png',
+    render: renderSvgToPng
   }
 };
 
@@ -143,21 +245,28 @@ const TOOLS = {
  * Universal Navigation and Media Loading Bus
  */
 function navigateToTool(targetToolKey, mediaPayload) {
-  if (!TOOLS[targetToolKey]) {
+  let matchedKey = targetToolKey;
+  if (!TOOLS[matchedKey]) {
+    // Check if passed as hash
+    const found = Object.entries(TOOLS).find(([k, conf]) => conf.hash === targetToolKey);
+    if (found) matchedKey = found[0];
+  }
+
+  if (!TOOLS[matchedKey]) {
     console.warn(`Unknown target tool: ${targetToolKey}`);
     return;
   }
 
   // Switch to target tool
-  switchTool(targetToolKey);
+  switchTool(matchedKey);
 
   // Deliver media into tool instance
   if (mediaPayload) {
     setTimeout(() => {
-      const instance = toolInstances[targetToolKey];
+      const instance = toolInstances[matchedKey];
       if (instance && instance.loadMedia) {
         if (Array.isArray(mediaPayload)) {
-          if (targetToolKey === 'gifMaker' || targetToolKey === 'converter') {
+          if (matchedKey === 'gifMaker' || matchedKey === 'converter') {
             instance.loadMedia(mediaPayload);
           } else if (mediaPayload.length > 0) {
             instance.loadMedia(mediaPayload[0]);
@@ -172,7 +281,6 @@ function navigateToTool(targetToolKey, mediaPayload) {
 
 /**
  * Global Chaining Bus
- * Passes output from one tool directly into the input of another
  */
 function handleChainMedia(targetToolKey, blob, mimeType) {
   navigateToTool(targetToolKey, blob);
@@ -252,7 +360,7 @@ if (brandLogo) {
 document.querySelectorAll('.sub-nav-link').forEach(btn => {
   btn.addEventListener('click', () => {
     if (btn.dataset.tool) {
-      switchTool(btn.dataset.tool);
+      navigateToTool(btn.dataset.tool);
     }
   });
 });
@@ -262,7 +370,7 @@ document.querySelectorAll('.footer-tool-btn, .footer-mini-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     if (btn.dataset.tool) {
-      switchTool(btn.dataset.tool);
+      navigateToTool(btn.dataset.tool);
     }
   });
 });
@@ -274,7 +382,7 @@ function handleHashChange() {
     switchTool('home');
     return;
   }
-  const foundEntry = Object.entries(TOOLS).find(([key, conf]) => conf.hash === hash);
+  const foundEntry = Object.entries(TOOLS).find(([key, conf]) => conf.hash === hash || key === hash);
   if (foundEntry) {
     switchTool(foundEntry[0]);
   } else {
@@ -291,4 +399,4 @@ if (window.location.hash && window.location.hash !== '#home') {
   switchTool('home');
 }
 
-console.log('🚀 PixelMint initialized: Fast In-Browser Media Suite');
+console.log('🚀 PixelMint initialized: Full In-Browser Media Suite');

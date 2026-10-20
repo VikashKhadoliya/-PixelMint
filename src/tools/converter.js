@@ -2,6 +2,7 @@
  * Multi-Format Image Converter for PixelMint
  * Converts images between WebP, PNG, JPG, and GIF with batch processing and quality control
  */
+import JSZip from 'jszip';
 import { formatBytes, downloadBlob, readFileAsDataURL, loadImageFromSrc } from '../utils/fileHelpers.js';
 
 export function renderConverter(container, onChainMedia) {
@@ -94,7 +95,7 @@ export function renderConverter(container, onChainMedia) {
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              Download All Converted
+              Download All as ZIP Archive
             </button>
           </div>
           <div class="queue-list" id="conv-queue-list"></div>
@@ -340,15 +341,26 @@ export function renderConverter(container, onChainMedia) {
     }
   });
 
-  downloadAllBtn.addEventListener('click', () => {
-    fileQueue.forEach(item => {
-      if (item.convertedBlob) {
-        const targetMime = targetFormatSelect.value;
-        const ext = targetMime === 'image/jpeg' ? 'jpg' : (targetMime === 'image/webp' ? 'webp' : 'png');
+  downloadAllBtn.addEventListener('click', async () => {
+    const doneItems = fileQueue.filter(item => item.convertedBlob);
+    if (doneItems.length === 0) return;
+
+    try {
+      const zip = new JSZip();
+      const targetMime = targetFormatSelect.value;
+      const ext = targetMime === 'image/jpeg' ? 'jpg' : (targetMime === 'image/webp' ? 'webp' : 'png');
+
+      doneItems.forEach((item, idx) => {
         const baseName = item.name.substring(0, item.name.lastIndexOf('.')) || item.name;
-        downloadBlob(item.convertedBlob, `${baseName}.${ext}`);
-      }
-    });
+        const filename = `${baseName}.${ext}`;
+        zip.file(filename, item.convertedBlob);
+      });
+
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      downloadBlob(zipBlob, `pixelmint-converted-${Date.now()}.zip`);
+    } catch (err) {
+      alert('Failed to generate ZIP: ' + err.message);
+    }
   });
 
   return {

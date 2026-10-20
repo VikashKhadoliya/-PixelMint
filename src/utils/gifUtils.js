@@ -166,3 +166,75 @@ export async function encodeGif(frames, options = {}) {
   const bytes = gif.bytes();
   return new Blob([bytes], { type: 'image/gif' });
 }
+
+/**
+ * Inspects GIF structural metadata and per-frame specs for the GIF Analyzer tool
+ * @param {ArrayBuffer} arrayBuffer 
+ */
+export function analyzeGif(arrayBuffer) {
+  const bytes = new Uint8Array(arrayBuffer);
+  const reader = new GifReader(bytes);
+
+  // Read header signature
+  let version = 'GIF89a';
+  if (bytes.length >= 6) {
+    version = String.fromCharCode(...bytes.slice(0, 6));
+  }
+
+  const width = reader.width;
+  const height = reader.height;
+  const numFrames = reader.numFrames();
+  const loopCount = reader.loopCount();
+
+  const disposalNames = {
+    0: 'Unspecified',
+    1: 'Do Not Dispose (Leave in place)',
+    2: 'Restore to Background (Clear to transparent)',
+    3: 'Restore to Previous (Revert canvas)'
+  };
+
+  let totalDurationMs = 0;
+  const frameReports = [];
+
+  for (let i = 0; i < numFrames; i++) {
+    const info = reader.frameInfo(i);
+    let delayHundredths = info.delay || 10;
+    if (delayHundredths < 2) delayHundredths = 10;
+    const delayMs = delayHundredths * 10;
+    totalDurationMs += delayMs;
+
+    frameReports.push({
+      index: i + 1,
+      x: info.x,
+      y: info.y,
+      width: info.width,
+      height: info.height,
+      delayHundredths,
+      delayMs,
+      disposal: info.disposal,
+      disposalName: disposalNames[info.disposal] || `Method ${info.disposal}`,
+      transparentIndex: info.transparent_index,
+      hasTransparency: info.transparent_index !== null,
+      hasLocalPalette: !!info.has_local_palette
+    });
+  }
+
+  const durationSec = (totalDurationMs / 1000).toFixed(2);
+  const avgFps = totalDurationMs > 0 ? (numFrames / (totalDurationMs / 1000)).toFixed(1) : 0;
+
+  return {
+    version,
+    width,
+    height,
+    aspectRatio: `${width} : ${height}`,
+    numFrames,
+    loopCount: loopCount === null ? 0 : loopCount,
+    loopText: loopCount === 0 || loopCount === null ? 'Infinite (Loops Forever)' : `${loopCount} times`,
+    totalDurationMs,
+    durationSec,
+    avgFps,
+    byteSize: arrayBuffer.byteLength,
+    frameReports
+  };
+}
+

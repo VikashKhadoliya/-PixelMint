@@ -6,23 +6,23 @@
   
   <!-- Primary Meta Tags -->
   <title>PixelMint — Free Online Image & Animated GIF Toolkit</title>
-  <meta name="description" content="Free online animated GIF maker, video to GIF converter, image resizer, cropper, optimizer, effects studio, and batch format converter. Fast in-browser media editing." />
-  <meta name="keywords" content="GIF maker, video to GIF, resize GIF, crop GIF, compress GIF, optimize GIF, webp to jpg, image converter, free online gif tools" />
+  <meta name="description" content="Free online animated GIF maker, video editor, image resizer, cropper, optimizer, effects studio, meme caption maker, frame splitter, and batch format converter." />
+  <meta name="keywords" content="GIF maker, video to GIF, resize GIF, crop GIF, compress GIF, optimize GIF, split GIF, meme caption, add text, discord 8mb, webp to jpg, free online gif tools" />
   <meta name="theme-color" content="#E53935" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PixelMint — Free Online Image & Animated GIF Toolkit" />
   <meta property="og:description" content="Create, resize, crop, optimize, and convert animated GIFs and images directly in your browser. Fast, free, and lightweight." />
-  <meta property="og:image" content="/icons/Logo.png" />
+  <meta property="og:image" content="/images/pixelmint-mark.svg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PixelMint — Free Online Image & Animated GIF Toolkit" />
   <meta name="twitter:description" content="Create, resize, crop, optimize, and convert animated GIFs and images directly in your browser." />
 
-  <link rel="icon" type="image/png" href="/icons/Logo.png" />
-  <link rel="apple-touch-icon" href="/icons/Logo.png" />
+  <link rel="icon" type="image/svg+xml" href="/images/pixelmint-mark.svg" />
+  <link rel="apple-touch-icon" href="/images/pixelmint-mark.svg" />
 
   <!-- JSON-LD Structured Data Schema -->
   <script type="application/ld+json">
@@ -46,7 +46,7 @@
   <header class="site-header">
     <div class="header-container">
       <a href="#home" class="brand-logo" aria-label="PixelMint Home">
-        <img src="/icons/Logo.png" alt="PixelMint" class="brand-logo-img" width="34" height="34" />
+        <img src="/images/pixelmint-mark.svg" alt="PixelMint" class="brand-logo-img" width="32" height="32" />
         <span class="brand-text">Pixel<span class="brand-text-mint">Mint</span></span>
       </a>
 
@@ -62,8 +62,8 @@
         <button class="nav-tab-btn" data-tool="gifMaker">
           <img src="/icons/tool-animator.svg" alt="" class="nav-tab-icon" width="16" height="16" /> GIF Maker
         </button>
-        <button class="nav-tab-btn" data-tool="videoToGif">
-          <img src="/icons/camera-video.svg" alt="" class="nav-tab-icon" width="16" height="16" /> Video to GIF
+        <button class="nav-tab-btn" data-tool="videoTools">
+          <img src="/icons/camera-video.svg" alt="" class="nav-tab-icon" width="16" height="16" /> Video Tools
         </button>
         <button class="nav-tab-btn" data-tool="resizer">
           <img src="/icons/transform-scale.svg" alt="" class="nav-tab-icon" width="16" height="16" /> Resizer
@@ -76,6 +76,22 @@
         </button>
         <button class="nav-tab-btn" data-tool="effects">
           <img src="/icons/tools-wizard.svg" alt="" class="nav-tab-icon" width="16" height="16" /> Effects
+        </button>
+        <button class="nav-tab-btn" data-tool="addText">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align: middle; margin-right: 4px;">
+            <polyline points="4 7 4 4 20 4 20 7"></polyline>
+            <line x1="9" y1="20" x2="15" y2="20"></line>
+            <line x1="12" y1="4" x2="12" y2="20"></line>
+          </svg>
+          Add Text
+        </button>
+        <button class="nav-tab-btn" data-tool="splitter">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align: middle; margin-right: 4px;">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <line x1="15" y1="3" x2="15" y2="21"></line>
+          </svg>
+          Split
         </button>
         <button class="nav-tab-btn" data-tool="converter">
           <img src="/icons/view-refresh.svg" alt="" class="nav-tab-icon" width="16" height="16" /> Converter
@@ -117,29 +133,41 @@
         <span class="sub-nav-sep">•</span>
         <button class="sub-nav-link" data-tool="videoToGif">Video to GIF</button>
         <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="videoToGif">Video Cutter</button>
+        <button class="sub-nav-link" data-tool="cutVideo">Video Cutter</button>
         <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="resizer">Resize Image</button>
+        <button class="sub-nav-link" data-tool="resizeVideo">Resize Video</button>
+        <span class="sub-nav-sep">•</span>
+        <button class="sub-nav-link" data-tool="cropVideo">Crop Video</button>
         <span class="sub-nav-sep">•</span>
         <button class="sub-nav-link" data-tool="resizer">Resize GIF</button>
         <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="cropper">Crop Tool</button>
+        <button class="sub-nav-link" data-tool="cropper">Crop GIF</button>
+        <span class="sub-nav-sep">•</span>
+        <button class="sub-nav-link" data-tool="rotate">Rotate &amp; Flip</button>
+        <span class="sub-nav-sep">•</span>
+        <button class="sub-nav-link" data-tool="reverse">Reverse GIF</button>
+        <span class="sub-nav-sep">•</span>
+        <button class="sub-nav-link" data-tool="speed">Change Speed</button>
         <span class="sub-nav-sep">•</span>
         <button class="sub-nav-link" data-tool="optimizer">Optimize GIF</button>
         <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="optimizer">Discord 8MB</button>
+        <button class="sub-nav-link" data-tool="targetSizeCompressor">Discord 8MB</button>
         <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="effects">Effects Studio</button>
+        <button class="sub-nav-link" data-tool="addText">Add Text</button>
         <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="effects">Rotate &amp; Flip</button>
+        <button class="sub-nav-link" data-tool="whiteBoxCaption">Meme Caption</button>
         <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="effects">Reverse GIF</button>
+        <button class="sub-nav-link" data-tool="splitter">Split Frames</button>
+        <span class="sub-nav-sep">•</span>
+        <button class="sub-nav-link" data-tool="spriteSheet">Sprite Sheet</button>
+        <span class="sub-nav-sep">•</span>
+        <button class="sub-nav-link" data-tool="analyzer">GIF Analyzer</button>
+        <span class="sub-nav-sep">•</span>
+        <button class="sub-nav-link" data-tool="gifToMp4">GIF to MP4</button>
+        <span class="sub-nav-sep">•</span>
+        <button class="sub-nav-link" data-tool="svgToPng">SVG to PNG</button>
         <span class="sub-nav-sep">•</span>
         <button class="sub-nav-link" data-tool="converter">Batch Converter</button>
-        <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="converter">WebP to JPG</button>
-        <span class="sub-nav-sep">•</span>
-        <button class="sub-nav-link" data-tool="converter">PNG to WebP</button>
       </div>
     </nav>
   </header>
@@ -156,6 +184,9 @@
     <button class="mobile-drawer-link" data-tool="gifMaker">
       <img src="/icons/tool-animator.svg" alt="" width="18" height="18" /> GIF Maker
     </button>
+    <button class="mobile-drawer-link" data-tool="videoTools">
+      <img src="/icons/camera-video.svg" alt="" width="18" height="18" /> Video Tools Suite
+    </button>
     <button class="mobile-drawer-link" data-tool="videoToGif">
       <img src="/icons/camera-video.svg" alt="" width="18" height="18" /> Video to GIF
     </button>
@@ -168,8 +199,65 @@
     <button class="mobile-drawer-link" data-tool="optimizer">
       <img src="/icons/speedometer.svg" alt="" width="18" height="18" /> GIF Optimizer
     </button>
+    <button class="mobile-drawer-link" data-tool="targetSizeCompressor">
+      <img src="/icons/speedometer.svg" alt="" width="18" height="18" /> Discord 8MB Compressor
+    </button>
     <button class="mobile-drawer-link" data-tool="effects">
       <img src="/icons/tools-wizard.svg" alt="" width="18" height="18" /> Effects Studio
+    </button>
+    <button class="mobile-drawer-link" data-tool="rotate">
+      <img src="/icons/transform-scale.svg" alt="" width="18" height="18" /> Rotate &amp; Flip
+    </button>
+    <button class="mobile-drawer-link" data-tool="reverse">
+      <img src="/icons/tool-animator.svg" alt="" width="18" height="18" /> Reverse GIF
+    </button>
+    <button class="mobile-drawer-link" data-tool="addText">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="4 7 4 4 20 4 20 7"></polyline>
+        <line x1="9" y1="20" x2="15" y2="20"></line>
+        <line x1="12" y1="4" x2="12" y2="20"></line>
+      </svg>
+      Add Text
+    </button>
+    <button class="mobile-drawer-link" data-tool="whiteBoxCaption">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="3" width="20" height="18" rx="2"></rect>
+        <line x1="2" y1="9" x2="22" y2="9"></line>
+      </svg>
+      Meme Caption Maker
+    </button>
+    <button class="mobile-drawer-link" data-tool="splitter">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+        <line x1="9" y1="3" x2="9" y2="21"></line>
+      </svg>
+      GIF Frame Splitter (ZIP)
+    </button>
+    <button class="mobile-drawer-link" data-tool="spriteSheet">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+      </svg>
+      Sprite Sheet Studio
+    </button>
+    <button class="mobile-drawer-link" data-tool="analyzer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      GIF Analyzer
+    </button>
+    <button class="mobile-drawer-link" data-tool="gifToMp4">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+      GIF to MP4
+    </button>
+    <button class="mobile-drawer-link" data-tool="svgToPng">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+      </svg>
+      SVG to PNG
     </button>
     <button class="mobile-drawer-link" data-tool="converter">
       <img src="/icons/view-refresh.svg" alt="" width="18" height="18" /> Format Converter
@@ -195,7 +283,7 @@
       <img src="/icons/tool-animator.svg" alt="" class="mobile-nav-icon" width="22" height="22" />
       <span>Maker</span>
     </button>
-    <button class="mobile-nav-item" data-tool="videoToGif">
+    <button class="mobile-nav-item" data-tool="videoTools">
       <img src="/icons/camera-video.svg" alt="" class="mobile-nav-icon" width="22" height="22" />
       <span>Video</span>
     </button>
@@ -211,9 +299,12 @@
       <img src="/icons/speedometer.svg" alt="" class="mobile-nav-icon" width="22" height="22" />
       <span>Optimize</span>
     </button>
-    <button class="mobile-nav-item" data-tool="effects">
-      <img src="/icons/tools-wizard.svg" alt="" class="mobile-nav-icon" width="22" height="22" />
-      <span>Effects</span>
+    <button class="mobile-nav-item" data-tool="splitter">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="mobile-nav-icon">
+        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+        <line x1="9" y1="3" x2="9" y2="21"></line>
+      </svg>
+      <span>Split</span>
     </button>
     <button class="mobile-nav-item" data-tool="converter">
       <img src="/icons/view-refresh.svg" alt="" class="mobile-nav-icon" width="22" height="22" />
@@ -230,10 +321,14 @@
           <h4 class="footer-col-title">Video Tools</h4>
           <ul class="footer-links-list">
             <li><button class="footer-tool-btn" data-tool="videoToGif">Video to GIF Converter</button></li>
-            <li><button class="footer-tool-btn" data-tool="videoToGif">Online Video Cutter &amp; Trimmer</button></li>
-            <li><button class="footer-tool-btn" data-tool="videoToGif">MP4 to Animated GIF</button></li>
-            <li><button class="footer-tool-btn" data-tool="videoToGif">WebM to GIF Converter</button></li>
-            <li><button class="footer-tool-btn" data-tool="videoToGif">MOV to GIF Converter</button></li>
+            <li><button class="footer-tool-btn" data-tool="cutVideo">Online Video Cutter &amp; Trimmer</button></li>
+            <li><button class="footer-tool-btn" data-tool="resizeVideo">Resize Video Resolution</button></li>
+            <li><button class="footer-tool-btn" data-tool="cropVideo">Video Cropper (Square &amp; 9:16)</button></li>
+            <li><button class="footer-tool-btn" data-tool="rotateVideo">Rotate &amp; Flip Video</button></li>
+            <li><button class="footer-tool-btn" data-tool="videoSpeed">Video Speed Multiplier</button></li>
+            <li><button class="footer-tool-btn" data-tool="videoFilters">Video Color Filters</button></li>
+            <li><button class="footer-tool-btn" data-tool="loopVideo">Video Looper</button></li>
+            <li><button class="footer-tool-btn" data-tool="videoToJpg">Video to JPG Sequence (ZIP)</button></li>
           </ul>
         </div>
 
@@ -242,37 +337,39 @@
           <h4 class="footer-col-title">GIF &amp; Animation</h4>
           <ul class="footer-links-list">
             <li><button class="footer-tool-btn" data-tool="gifMaker">Animated GIF Maker</button></li>
-            <li><button class="footer-tool-btn" data-tool="gifMaker">Photos to GIF Slideshow</button></li>
+            <li><button class="footer-tool-btn" data-tool="reverse">Reverse GIF Playback</button></li>
+            <li><button class="footer-tool-btn" data-tool="speed">Animation Speed Changer</button></li>
+            <li><button class="footer-tool-btn" data-tool="cut">Cut GIF Animation Duration</button></li>
             <li><button class="footer-tool-btn" data-tool="optimizer">GIF File Size Optimizer</button></li>
-            <li><button class="footer-tool-btn" data-tool="optimizer">Discord 8MB GIF Compressor</button></li>
-            <li><button class="footer-tool-btn" data-tool="optimizer">Drop Duplicate Frames</button></li>
+            <li><button class="footer-tool-btn" data-tool="targetSizeCompressor">Discord 8MB Target Size Compressor</button></li>
+            <li><button class="footer-tool-btn" data-tool="targetSizeCompressor">Slack 10MB Compressor</button></li>
           </ul>
         </div>
 
         <!-- Col 3: Transform & Edit -->
         <div class="footer-col">
-          <h4 class="footer-col-title">Transform &amp; Edit</h4>
+          <h4 class="footer-col-title">Transform &amp; Annotations</h4>
           <ul class="footer-links-list">
             <li><button class="footer-tool-btn" data-tool="resizer">Image &amp; GIF Resizer</button></li>
-            <li><button class="footer-tool-btn" data-tool="resizer">Percentage Scale Resizer</button></li>
             <li><button class="footer-tool-btn" data-tool="cropper">Image &amp; GIF Cropper</button></li>
-            <li><button class="footer-tool-btn" data-tool="cropper">Interactive Bounding Marquee</button></li>
-            <li><button class="footer-tool-btn" data-tool="effects">Effects &amp; Filter Studio</button></li>
-            <li><button class="footer-tool-btn" data-tool="effects">Rotate &amp; Flip Image/GIF</button></li>
-            <li><button class="footer-tool-btn" data-tool="effects">Reverse GIF Playback</button></li>
+            <li><button class="footer-tool-btn" data-tool="rotate">Rotate &amp; Flip Image/GIF</button></li>
+            <li><button class="footer-tool-btn" data-tool="effects">Effects &amp; Color Filter Studio</button></li>
+            <li><button class="footer-tool-btn" data-tool="addText">Add Text &amp; Subtitles to GIF</button></li>
+            <li><button class="footer-tool-btn" data-tool="whiteBoxCaption">White Box Caption Meme Maker</button></li>
           </ul>
         </div>
 
-        <!-- Col 4: Format Converters -->
+        <!-- Col 4: Frames, Sprites & Converters -->
         <div class="footer-col">
-          <h4 class="footer-col-title">Format Converters</h4>
+          <h4 class="footer-col-title">Extraction &amp; Converters</h4>
           <ul class="footer-links-list">
-            <li><button class="footer-tool-btn" data-tool="converter">Batch Format Converter</button></li>
-            <li><button class="footer-tool-btn" data-tool="converter">WebP to JPG Converter</button></li>
-            <li><button class="footer-tool-btn" data-tool="converter">PNG to JPG Converter</button></li>
-            <li><button class="footer-tool-btn" data-tool="converter">JPG to WebP Converter</button></li>
-            <li><button class="footer-tool-btn" data-tool="converter">GIF to WebP Converter</button></li>
-            <li><button class="footer-tool-btn" data-tool="converter">Transparent Image Fill</button></li>
+            <li><button class="footer-tool-btn" data-tool="splitter">GIF Frame Splitter (ZIP Archive)</button></li>
+            <li><button class="footer-tool-btn" data-tool="spriteSheet">GIF to Sprite Sheet Generator</button></li>
+            <li><button class="footer-tool-btn" data-tool="spriteCutter">Sprite Sheet Tile Cutter</button></li>
+            <li><button class="footer-tool-btn" data-tool="analyzer">GIF Structure &amp; Header Analyzer</button></li>
+            <li><button class="footer-tool-btn" data-tool="gifToMp4">GIF to MP4 &amp; WebM Video</button></li>
+            <li><button class="footer-tool-btn" data-tool="svgToPng">SVG to PNG High-DPI Rasterizer</button></li>
+            <li><button class="footer-tool-btn" data-tool="converter">Batch Format Converter (WebP, PNG, JPG)</button></li>
           </ul>
         </div>
       </div>
@@ -288,11 +385,12 @@
         <div class="footer-quick-nav">
           <button class="footer-mini-btn" data-tool="home">Home</button>
           <button class="footer-mini-btn" data-tool="gifMaker">Maker</button>
-          <button class="footer-mini-btn" data-tool="videoToGif">Video</button>
+          <button class="footer-mini-btn" data-tool="videoTools">Video</button>
           <button class="footer-mini-btn" data-tool="resizer">Resize</button>
           <button class="footer-mini-btn" data-tool="cropper">Crop</button>
           <button class="footer-mini-btn" data-tool="optimizer">Optimize</button>
-          <button class="footer-mini-btn" data-tool="effects">Effects</button>
+          <button class="footer-mini-btn" data-tool="addText">Text</button>
+          <button class="footer-mini-btn" data-tool="splitter">Split</button>
           <button class="footer-mini-btn" data-tool="converter">Convert</button>
         </div>
       </div>
