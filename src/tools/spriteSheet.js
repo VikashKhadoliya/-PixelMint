@@ -33,12 +33,7 @@ export function renderSpriteSheet(container, onChainMedia, initialMode = 'genera
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-          </svg>
+          <img src="/icons/view-grid.png" class="tool-hero-icon" alt="Sprite Sheet" width="28" height="28" />
           <span class="tool-badge">Sprite Utilities</span>
           <h2>Sprite Sheet Studio</h2>
         </div>

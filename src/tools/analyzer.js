@@ -15,12 +15,7 @@ export function renderAnalyzer(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            <line x1="11" y1="8" x2="11" y2="14"></line>
-            <line x1="8" y1="11" x2="14" y2="11"></line>
-          </svg>
+          <img src="/icons/view-statistics.png" class="tool-hero-icon" alt="Analyzer" width="28" height="28" />
           <span class="tool-badge">Analysis</span>
           <h2>GIF Structure Analyzer</h2>
         </div>

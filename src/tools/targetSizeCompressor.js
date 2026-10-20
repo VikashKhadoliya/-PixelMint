@@ -16,11 +16,7 @@ export function renderTargetSizeCompressor(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
-            <path d="M12 12v9"></path>
-            <path d="m8 17 4 4 4-4"></path>
-          </svg>
+          <img src="/icons/utilities-file-archiver.png" class="tool-hero-icon" alt="Compressor" width="28" height="28" />
           <span class="tool-badge">Target Size</span>
           <h2>Target Size GIF Compressor</h2>
         </div>

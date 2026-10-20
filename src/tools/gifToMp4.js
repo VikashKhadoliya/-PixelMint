@@ -15,9 +15,7 @@ export function renderGifToMp4(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-          </svg>
+          <img src="/icons/document-export.png" class="tool-hero-icon" alt="GIF to MP4" width="28" height="28" />
           <span class="tool-badge">Video Export</span>
           <h2>GIF to MP4 &amp; WebM Video Converter</h2>
         </div>

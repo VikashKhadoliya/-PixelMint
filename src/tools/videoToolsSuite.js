@@ -36,15 +36,15 @@ export function renderVideoTools(container, onChainMedia, initialMode = 'cut') {
   let loopCount = 2;
 
   const modeDescriptions = {
-    cut: { title: 'Online Video Cutter & Trimmer', badge: 'Trimming', desc: 'Trim start and end points of your video and export a clean shortened clip.' },
-    resize: { title: 'Online Video Resizer', badge: 'Dimensions', desc: 'Scale video resolution to standard presets (1080p, 720p, 480p, 360p) or custom width and height.' },
-    crop: { title: 'Online Video Cropper', badge: 'Framing', desc: 'Crop video area to custom framing or standard aspect ratios (1:1 Square, 16:9 Wide, 9:16 TikTok/Reels).' },
-    rotate: { title: 'Rotate & Flip Video', badge: 'Orientation', desc: 'Rotate video 90°, 180°, 270° or mirror horizontally and vertically.' },
-    speed: { title: 'Video Speed Changer', badge: 'Speed', desc: 'Speed up or slow down video playback rate from 0.25x to 3x.' },
-    filters: { title: 'Video Filters & Effects', badge: 'Styling', desc: 'Apply real-time color filters: Grayscale, Sepia, Invert, or Vintage pop to your video.' },
-    loop: { title: 'Video Looper', badge: 'Repetition', desc: 'Repeat a video clip multiple times (2x, 3x, 4x, 5x) into an extended continuous video.' },
-    'to-images': { title: 'Video to JPG / PNG Sequence', badge: 'Extraction', desc: 'Extract video keyframes into a downloadable still image sequence or ZIP archive.' },
-    'screen-record': { title: 'Online Screen Recorder', badge: 'Capture', desc: 'Record your desktop screen, browser tab, or window directly with instant trimming and GIF export.' }
+    cut: { title: 'Online Video Cutter & Trimmer', badge: 'Trimming', desc: 'Trim start and end points of your video and export a clean shortened clip.', icon: '/icons/player-volume.png' },
+    resize: { title: 'Online Video Resizer', badge: 'Dimensions', desc: 'Scale video resolution to standard presets (1080p, 720p, 480p, 360p) or custom width and height.', icon: '/icons/transform-scale.png' },
+    crop: { title: 'Online Video Cropper', badge: 'Framing', desc: 'Crop video area to custom framing or standard aspect ratios (1:1 Square, 16:9 Wide, 9:16 TikTok/Reels).', icon: '/icons/transform-crop.png' },
+    rotate: { title: 'Rotate & Flip Video', badge: 'Orientation', desc: 'Rotate video 90°, 180°, 270° or mirror horizontally and vertically.', icon: '/icons/transform-rotate.png' },
+    speed: { title: 'Video Speed Changer', badge: 'Speed', desc: 'Speed up or slow down video playback rate from 0.25x to 3x.', icon: '/icons/chronometer.png' },
+    filters: { title: 'Video Filters & Effects', badge: 'Styling', desc: 'Apply real-time color filters: Grayscale, Sepia, Invert, or Vintage pop to your video.', icon: '/icons/color-picker.png' },
+    loop: { title: 'Video Looper', badge: 'Repetition', desc: 'Repeat a video clip multiple times (2x, 3x, 4x, 5x) into an extended continuous video.', icon: '/icons/media-playlist-repeat.png' },
+    'to-images': { title: 'Video to JPG / PNG Sequence', badge: 'Extraction', desc: 'Extract video keyframes into a downloadable still image sequence or ZIP archive.', icon: '/icons/archive-extract.png' },
+    'screen-record': { title: 'Online Screen Recorder', badge: 'Capture', desc: 'Record your desktop screen, browser tab, or window directly with instant trimming and GIF export.', icon: '/icons/media-record.png' }
   };
 
   const meta = modeDescriptions[activeMode] || modeDescriptions.cut;
@@ -53,10 +53,7 @@ export function renderVideoTools(container, onChainMedia, initialMode = 'cut') {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <polygon points="23 7 16 12 23 17 23 7"></polygon>
-            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-          </svg>
+          <img src="${meta.icon}" class="tool-hero-icon" alt="" width="28" height="28" />
           <span class="tool-badge">${meta.badge}</span>
           <h2>${meta.title}</h2>
         </div>
@@ -64,15 +61,15 @@ export function renderVideoTools(container, onChainMedia, initialMode = 'cut') {
 
         <!-- Operation Tabs -->
         <div class="sub-tool-tabs" style="display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;">
-          <button class="btn ${activeMode === 'cut' ? 'btn-primary' : 'btn-outline'}" data-mode="cut">Cut Video</button>
-          <button class="btn ${activeMode === 'resize' ? 'btn-primary' : 'btn-outline'}" data-mode="resize">Resize</button>
-          <button class="btn ${activeMode === 'crop' ? 'btn-primary' : 'btn-outline'}" data-mode="crop">Crop</button>
-          <button class="btn ${activeMode === 'rotate' ? 'btn-primary' : 'btn-outline'}" data-mode="rotate">Rotate</button>
-          <button class="btn ${activeMode === 'speed' ? 'btn-primary' : 'btn-outline'}" data-mode="speed">Speed</button>
-          <button class="btn ${activeMode === 'filters' ? 'btn-primary' : 'btn-outline'}" data-mode="filters">Filters</button>
-          <button class="btn ${activeMode === 'loop' ? 'btn-primary' : 'btn-outline'}" data-mode="loop">Loop</button>
-          <button class="btn ${activeMode === 'to-images' ? 'btn-primary' : 'btn-outline'}" data-mode="to-images">to Images</button>
-          <button class="btn ${activeMode === 'screen-record' ? 'btn-primary' : 'btn-outline'}" data-mode="screen-record">Screen Record</button>
+          <button class="btn ${activeMode === 'cut' ? 'btn-primary' : 'btn-outline'}" data-mode="cut"><img src="/icons/player-volume.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Cut Video</button>
+          <button class="btn ${activeMode === 'resize' ? 'btn-primary' : 'btn-outline'}" data-mode="resize"><img src="/icons/transform-scale.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Resize</button>
+          <button class="btn ${activeMode === 'crop' ? 'btn-primary' : 'btn-outline'}" data-mode="crop"><img src="/icons/transform-crop.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Crop</button>
+          <button class="btn ${activeMode === 'rotate' ? 'btn-primary' : 'btn-outline'}" data-mode="rotate"><img src="/icons/transform-rotate.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Rotate</button>
+          <button class="btn ${activeMode === 'speed' ? 'btn-primary' : 'btn-outline'}" data-mode="speed"><img src="/icons/chronometer.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Speed</button>
+          <button class="btn ${activeMode === 'filters' ? 'btn-primary' : 'btn-outline'}" data-mode="filters"><img src="/icons/color-picker.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Filters</button>
+          <button class="btn ${activeMode === 'loop' ? 'btn-primary' : 'btn-outline'}" data-mode="loop"><img src="/icons/media-playlist-repeat.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Loop</button>
+          <button class="btn ${activeMode === 'to-images' ? 'btn-primary' : 'btn-outline'}" data-mode="to-images"><img src="/icons/archive-extract.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />to Images</button>
+          <button class="btn ${activeMode === 'screen-record' ? 'btn-primary' : 'btn-outline'}" data-mode="screen-record"><img src="/icons/media-record.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Screen Record</button>
         </div>
       </div>
 

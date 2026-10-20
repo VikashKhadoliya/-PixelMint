@@ -30,10 +30,10 @@ export function renderTransformTool(container, onChainMedia, mode = 'rotate') {
   let cutEndFrame = 1;
 
   const modeTitles = {
-    rotate: { title: 'Rotate & Flip Image/GIF', badge: 'Geometry', desc: 'Rotate media clockwise, counter-clockwise, or mirror horizontally and vertically.' },
-    reverse: { title: 'Reverse GIF Playback', badge: 'Timeline', desc: 'Invert the animation order so your GIF plays backwards with preserved frame delays.' },
-    speed: { title: 'Animation Speed Changer', badge: 'Timing', desc: 'Speed up or slow down your animated GIF by adjusting frame delays.' },
-    cut: { title: 'Cut GIF Animation Duration', badge: 'Trimming', desc: 'Trim start and end frames to shorten animation length or isolate specific moments.' }
+    rotate: { title: 'Rotate & Flip Image/GIF', badge: 'Geometry', desc: 'Rotate media clockwise, counter-clockwise, or mirror horizontally and vertically.', icon: '/icons/object-rotate-right.png' },
+    reverse: { title: 'Reverse GIF Playback', badge: 'Timeline', desc: 'Invert the animation order so your GIF plays backwards with preserved frame delays.', icon: '/icons/media-seek-backward.png' },
+    speed: { title: 'Animation Speed Changer', badge: 'Timing', desc: 'Speed up or slow down your animated GIF by adjusting frame delays.', icon: '/icons/chronometer.png' },
+    cut: { title: 'Cut GIF Animation Duration', badge: 'Trimming', desc: 'Trim start and end frames to shorten animation length or isolate specific moments.', icon: '/icons/edit-cut.png' }
   };
 
   const meta = modeTitles[activeMode] || modeTitles.rotate;
@@ -42,9 +42,7 @@ export function renderTransformTool(container, onChainMedia, mode = 'rotate') {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-          </svg>
+          <img src="${meta.icon}" class="tool-hero-icon" alt="" width="28" height="28" />
           <span class="tool-badge">${meta.badge}</span>
           <h2>${meta.title}</h2>
         </div>
@@ -52,10 +50,10 @@ export function renderTransformTool(container, onChainMedia, mode = 'rotate') {
 
         <!-- Mode Sub-Tabs -->
         <div class="sub-tool-tabs" style="display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;">
-          <button class="btn ${activeMode === 'rotate' ? 'btn-primary' : 'btn-outline'}" data-mode="rotate">Rotate &amp; Flip</button>
-          <button class="btn ${activeMode === 'reverse' ? 'btn-primary' : 'btn-outline'}" data-mode="reverse">Reverse GIF</button>
-          <button class="btn ${activeMode === 'speed' ? 'btn-primary' : 'btn-outline'}" data-mode="speed">Change Speed</button>
-          <button class="btn ${activeMode === 'cut' ? 'btn-primary' : 'btn-outline'}" data-mode="cut">Cut Duration</button>
+          <button class="btn ${activeMode === 'rotate' ? 'btn-primary' : 'btn-outline'}" data-mode="rotate"><img src="/icons/object-rotate-right.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Rotate &amp; Flip</button>
+          <button class="btn ${activeMode === 'reverse' ? 'btn-primary' : 'btn-outline'}" data-mode="reverse"><img src="/icons/media-seek-backward.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Reverse GIF</button>
+          <button class="btn ${activeMode === 'speed' ? 'btn-primary' : 'btn-outline'}" data-mode="speed"><img src="/icons/chronometer.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Change Speed</button>
+          <button class="btn ${activeMode === 'cut' ? 'btn-primary' : 'btn-outline'}" data-mode="cut"><img src="/icons/edit-cut.png" width="16" height="16" style="vertical-align: middle; margin-right: 4px;" alt="" />Cut Duration</button>
         </div>
       </div>
 

@@ -20,11 +20,7 @@ export function renderSvgToPng(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-            <polyline points="2 17 12 22 22 17"></polyline>
-            <polyline points="2 12 12 17 22 12"></polyline>
-          </svg>
+          <img src="/icons/image-svg+xml.png" class="tool-hero-icon" alt="SVG to PNG" width="28" height="28" />
           <span class="tool-badge">Vector Converter</span>
           <h2>SVG to PNG &amp; Raster Converter</h2>
         </div>

@@ -16,11 +16,7 @@ export function renderSplitter(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="9" y1="3" x2="9" y2="21"></line>
-            <line x1="15" y1="3" x2="15" y2="21"></line>
-          </svg>
+          <img src="/icons/split.png" class="tool-hero-icon" alt="Split" width="28" height="28" />
           <span class="tool-badge">Frame Extraction</span>
           <h2>GIF Frame Splitter</h2>
         </div>

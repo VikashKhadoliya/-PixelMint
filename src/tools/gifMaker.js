@@ -150,15 +150,15 @@ export function renderGifMaker(container, onChainMedia) {
           <div class="chain-pipeline">
             <div class="chain-title">Chain this result into another tool:</div>
             <div class="chain-buttons">
-              <button class="chain-btn" data-tool="cropper"><img src="/icons/transform-crop.svg" class="chain-btn-icon" alt="" /> Crop</button>
-              <button class="chain-btn" data-tool="resizer"><img src="/icons/transform-scale.svg" class="chain-btn-icon" alt="" /> Resize</button>
-              <button class="chain-btn" data-tool="optimizer"><img src="/icons/speedometer.svg" class="chain-btn-icon" alt="" /> Optimize</button>
-              <button class="chain-btn" data-tool="effects"><img src="/icons/tools-wizard.svg" class="chain-btn-icon" alt="" /> Effects</button>
-              <button class="chain-btn" data-tool="splitter">Split</button>
-              <button class="chain-btn" data-tool="addText">Add Text</button>
-              <button class="chain-btn" data-tool="whiteBoxCaption">Meme Caption</button>
-              <button class="chain-btn" data-tool="gifToMp4">to MP4 Video</button>
-              <button class="chain-btn" data-tool="analyzer">Analyze</button>
+              <button class="chain-btn" data-tool="cropper"><img src="/icons/transform-crop.png" class="chain-btn-icon" alt="" /> Crop</button>
+              <button class="chain-btn" data-tool="resizer"><img src="/icons/transform-scale.png" class="chain-btn-icon" alt="" /> Resize</button>
+              <button class="chain-btn" data-tool="optimizer"><img src="/icons/speedometer.png" class="chain-btn-icon" alt="" /> Optimize</button>
+              <button class="chain-btn" data-tool="effects"><img src="/icons/tools-wizard.png" class="chain-btn-icon" alt="" /> Effects</button>
+              <button class="chain-btn" data-tool="splitter"><img src="/icons/split.png" class="chain-btn-icon" alt="" /> Split</button>
+              <button class="chain-btn" data-tool="addText"><img src="/icons/draw-text.png" class="chain-btn-icon" alt="" /> Add Text</button>
+              <button class="chain-btn" data-tool="whiteBoxCaption"><img src="/icons/draw-bezier-curves.png" class="chain-btn-icon" alt="" /> Caption</button>
+              <button class="chain-btn" data-tool="gifToMp4"><img src="/icons/document-export.png" class="chain-btn-icon" alt="" /> to MP4</button>
+              <button class="chain-btn" data-tool="analyzer"><img src="/icons/view-statistics.png" class="chain-btn-icon" alt="" /> Analyze</button>
             </div>
           </div>
         </div>

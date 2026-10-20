@@ -12,7 +12,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'GIF & Animation',
       title: 'GIF Maker',
       desc: 'Combine multiple image frames into an animated GIF with custom delays, dithering, and crossfades.',
-      icon: '/icons/tool-animator.svg',
+      icon: '/icons/tool-animator.png',
       formats: ['PNG', 'JPG', 'WebP', 'GIF', 'SVG'],
       tags: ['gif', 'maker', 'animate', 'frames', 'create', 'slideshow', 'crossfade']
     },
@@ -22,7 +22,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'GIF & Animation',
       title: 'Reverse GIF',
       desc: 'Invert animation playback order so your GIF plays backwards with preserved delays.',
-      icon: '/icons/tool-animator.svg',
+      icon: '/icons/media-seek-backward.png',
       formats: ['GIF'],
       tags: ['reverse', 'backwards', 'rewind', 'invert', 'order']
     },
@@ -32,7 +32,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'GIF & Animation',
       title: 'Animation Speed Changer',
       desc: 'Speed up or slow down GIF playback speed by multiplying frame delay durations.',
-      icon: '/icons/speedometer.svg',
+      icon: '/icons/chronometer.png',
       formats: ['GIF'],
       tags: ['speed', 'fast', 'slow', 'motion', 'multiplier', 'fps']
     },
@@ -42,7 +42,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'GIF & Animation',
       title: 'Cut GIF Animation',
       desc: 'Trim start and end frames to shorten animation length or isolate specific moments.',
-      icon: '/icons/transform-crop.svg',
+      icon: '/icons/edit-cut.png',
       formats: ['GIF'],
       tags: ['cut', 'trim', 'duration', 'shorten', 'clip', 'slice']
     },
@@ -54,7 +54,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Video to GIF',
       desc: 'Convert MP4, WebM, or MOV video clips into lightweight, high-framerate animated GIFs.',
-      icon: '/icons/camera-video.svg',
+      icon: '/icons/camera-video.png',
       formats: ['MP4', 'WebM', 'MOV'],
       tags: ['video', 'mp4', 'webm', 'mov', 'clip', 'trim', 'fps']
     },
@@ -64,7 +64,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Online Video Cutter',
       desc: 'Trim video duration with precise start and end timestamps directly in your browser.',
-      icon: '/icons/camera-video.svg',
+      icon: '/icons/player-volume.png',
       formats: ['MP4', 'WebM', 'MOV'],
       tags: ['cut', 'trim', 'clip', 'video', 'duration', 'timestamp']
     },
@@ -74,7 +74,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Video Resizer',
       desc: 'Scale video resolution to 1080p, 720p, 480p, 360p, or custom dimensions.',
-      icon: '/icons/transform-scale.svg',
+      icon: '/icons/transform-scale.png',
       formats: ['MP4', 'WebM'],
       tags: ['resize', 'scale', 'video', '1080p', '720p', 'dimensions', 'resolution']
     },
@@ -84,7 +84,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Video Cropper',
       desc: 'Crop video viewports to 1:1 square, 16:9 widescreen, or 9:16 vertical TikTok/Reels.',
-      icon: '/icons/transform-crop.svg',
+      icon: '/icons/transform-crop.png',
       formats: ['MP4', 'WebM'],
       tags: ['crop', 'video', 'tiktok', 'reels', 'aspect', 'square', 'vertical']
     },
@@ -94,7 +94,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Rotate Video',
       desc: 'Rotate video 90°, 180°, 270° or mirror horizontally and vertically.',
-      icon: '/icons/camera-video.svg',
+      icon: '/icons/transform-rotate.png',
       formats: ['MP4', 'WebM'],
       tags: ['rotate', 'flip', 'video', 'orientation', 'mirror']
     },
@@ -104,7 +104,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Video Speed Changer',
       desc: 'Speed up or slow down video playback from 0.25x to 3.0x.',
-      icon: '/icons/speedometer.svg',
+      icon: '/icons/chronometer.png',
       formats: ['MP4', 'WebM'],
       tags: ['speed', 'fast', 'slow', 'playback', 'rate', 'video']
     },
@@ -114,7 +114,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Video Filters',
       desc: 'Apply color filters like Grayscale, Sepia, Invert, and Vibrant contrast to video clips.',
-      icon: '/icons/tools-wizard.svg',
+      icon: '/icons/color-picker.png',
       formats: ['MP4', 'WebM'],
       tags: ['filter', 'grayscale', 'sepia', 'color', 'video', 'effects']
     },
@@ -124,7 +124,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Video Looper',
       desc: 'Repeat video clips 2x, 3x, 4x, or 5x into an extended continuous video.',
-      icon: '/icons/view-refresh.svg',
+      icon: '/icons/media-playlist-repeat.png',
       formats: ['MP4', 'WebM'],
       tags: ['loop', 'repeat', 'extend', 'video', 'boomerang']
     },
@@ -134,7 +134,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Video Tools',
       title: 'Video to JPG Sequence',
       desc: 'Extract keyframes from video files into a downloadable image sequence or ZIP archive.',
-      icon: '/icons/camera-video.svg',
+      icon: '/icons/archive-extract.png',
       formats: ['MP4', 'WebM', 'JPG'],
       tags: ['extract', 'keyframes', 'frames', 'sequence', 'video', 'zip']
     },
@@ -146,7 +146,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Transform & Edit',
       title: 'Image & GIF Resizer',
       desc: 'Resize still images and animated GIFs to exact dimensions or percentage scale.',
-      icon: '/icons/transform-scale.svg',
+      icon: '/icons/transform-scale.png',
       formats: ['GIF', 'PNG', 'JPG', 'WebP'],
       tags: ['resize', 'scale', 'dimension', 'width', 'height', 'shrink', 'enlarge']
     },
@@ -156,7 +156,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Transform & Edit',
       title: 'Image & GIF Cropper',
       desc: 'Crop still images or animated GIFs with an interactive rectangular marquee selection.',
-      icon: '/icons/transform-crop.svg',
+      icon: '/icons/transform-crop.png',
       formats: ['GIF', 'PNG', 'JPG', 'WebP'],
       tags: ['crop', 'trim', 'cut', 'aspect', 'square', '16:9', '4:3']
     },
@@ -166,7 +166,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Transform & Edit',
       title: 'Rotate & Flip Image/GIF',
       desc: 'Rotate images and animated GIFs 90°, 180°, 270°, or mirror horizontally and vertically.',
-      icon: '/icons/transform-scale.svg',
+      icon: '/icons/object-rotate-right.png',
       formats: ['GIF', 'PNG', 'JPG', 'WebP'],
       tags: ['rotate', 'flip', 'horizontal', 'vertical', 'mirror', 'orientation']
     },
@@ -178,7 +178,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Optimization',
       title: 'GIF Optimizer',
       desc: 'Compress animated GIFs by downsampling color palettes, dropping redundant frames, or scaling down.',
-      icon: '/icons/speedometer.svg',
+      icon: '/icons/speedometer.png',
       formats: ['GIF', 'Discord 8MB'],
       tags: ['optimize', 'compress', 'reduce', 'smaller', 'kb', 'mb']
     },
@@ -188,7 +188,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Optimization',
       title: 'Target Size Compressor',
       desc: 'Automatically optimize GIFs to meet exact constraints: Discord 8MB, Slack 10MB, or custom KB/MB.',
-      icon: '/icons/speedometer.svg',
+      icon: '/icons/utilities-file-archiver.png',
       formats: ['GIF', 'Discord 8MB', 'Slack 10MB'],
       tags: ['discord', 'slack', 'target', 'size', '8mb', '10mb', 'compress', 'limit']
     },
@@ -200,7 +200,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Effects & Text',
       title: 'Effects Studio',
       desc: 'Adjust brightness, contrast, saturation, hue, or apply presets like Sepia, Grayscale, and Invert.',
-      icon: '/icons/tools-wizard.svg',
+      icon: '/icons/tools-wizard.png',
       formats: ['GIF', 'PNG', 'JPG', 'WebP'],
       tags: ['effects', 'filter', 'brightness', 'contrast', 'saturation', 'hue', 'sepia']
     },
@@ -210,7 +210,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Effects & Text',
       title: 'Add Text to GIF',
       desc: 'Overlay subtitles, annotations, memes, or watermark text over animated GIFs and images.',
-      icon: '/icons/tools-wizard.svg',
+      icon: '/icons/draw-text.png',
       formats: ['GIF', 'PNG', 'JPG', 'WebP'],
       tags: ['text', 'caption', 'subtitle', 'watermark', 'font', 'annotate']
     },
@@ -220,7 +220,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Effects & Text',
       title: 'White Box Caption Meme',
       desc: 'Add classic meme white banner header above or below your animated GIF with auto-wrapping text.',
-      icon: '/icons/tools-wizard.svg',
+      icon: '/icons/draw-bezier-curves.png',
       formats: ['GIF', 'PNG', 'JPG'],
       tags: ['meme', 'white box', 'caption', 'twitter', 'reddit', 'banner', 'funny']
     },
@@ -232,7 +232,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Frames & Sprites',
       title: 'GIF Frame Splitter',
       desc: 'Decompile animated GIFs into individual frames (PNG, WebP, JPG) and download single frames or ZIP archive.',
-      icon: '/icons/tool-animator.svg',
+      icon: '/icons/split.png',
       formats: ['GIF', 'PNG', 'ZIP'],
       tags: ['split', 'decompile', 'extract', 'frames', 'zip', 'explode']
     },
@@ -242,7 +242,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Frames & Sprites',
       title: 'Sprite Sheet Studio',
       desc: 'Stitch GIF frames into game sprite sheets or slice existing sprite sheets into animated GIFs.',
-      icon: '/icons/tool-animator.svg',
+      icon: '/icons/view-grid.png',
       formats: ['GIF', 'PNG', 'Sprite Sheet'],
       tags: ['sprite', 'sheet', 'game', 'tiles', 'cutter', 'slice', 'matrix']
     },
@@ -252,7 +252,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Frames & Sprites',
       title: 'GIF Analyzer',
       desc: 'Inspect GIF specification headers, dimensions, frame delays, disposal methods, and color tables.',
-      icon: '/icons/speedometer.svg',
+      icon: '/icons/view-statistics.png',
       formats: ['GIF'],
       tags: ['analyzer', 'metadata', 'inspect', 'disposal', 'delay', 'headers', 'fps']
     },
@@ -264,7 +264,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Format Converters',
       title: 'Batch Format Converter',
       desc: 'Batch convert images between WebP, PNG, JPG, and GIF with custom quality and background color fill.',
-      icon: '/icons/view-refresh.svg',
+      icon: '/icons/view-refresh.png',
       formats: ['WebP', 'PNG', 'JPG', 'GIF'],
       tags: ['convert', 'format', 'batch', 'webp', 'jpg', 'png', 'transcode']
     },
@@ -274,7 +274,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Format Converters',
       title: 'GIF to MP4 Video',
       desc: 'Convert heavy animated GIFs into lightweight, high-efficiency HTML5 video clips.',
-      icon: '/icons/camera-video.svg',
+      icon: '/icons/document-export.png',
       formats: ['GIF', 'MP4', 'WebM'],
       tags: ['gif to mp4', 'webm', 'video', 'convert', 'lightweight', 'h264']
     },
@@ -284,7 +284,7 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
       categoryName: 'Format Converters',
       title: 'SVG to PNG Converter',
       desc: 'Rasterize scalable vector graphics (SVG) into crisp PNG/JPG images at up to 8x resolution.',
-      icon: '/icons/view-refresh.svg',
+      icon: '/icons/image-svg+xml.png',
       formats: ['SVG', 'PNG', 'JPG'],
       tags: ['svg', 'png', 'vector', 'rasterize', 'dpi', 'scale', 'crisp']
     }
@@ -318,25 +318,25 @@ export function renderHomePage(container, onNavigate, initialQuery = '') {
           <div class="featured-tools-row">
             <div class="featured-tool-item" data-tool="videoToGif" title="Convert videos to animated GIF">
               <div class="featured-icon-box">
-                <img src="/icons/camera-video.svg" alt="" width="36" height="36" />
+                <img src="/icons/hero-video-to-gif.png" alt="" width="36" height="36" />
               </div>
               <span class="featured-tool-name">Video to GIF</span>
             </div>
             <div class="featured-tool-item" data-tool="gifMaker" title="Create animated GIFs from images">
               <div class="featured-icon-box">
-                <img src="/icons/tool-animator.svg" alt="" width="36" height="36" />
+                <img src="/icons/hero-gif-maker.png" alt="" width="36" height="36" />
               </div>
               <span class="featured-tool-name">GIF Maker</span>
             </div>
             <div class="featured-tool-item" data-tool="resizer" title="Resize images and animated GIFs">
               <div class="featured-icon-box">
-                <img src="/icons/transform-scale.svg" alt="" width="36" height="36" />
+                <img src="/icons/hero-resizer.png" alt="" width="36" height="36" />
               </div>
               <span class="featured-tool-name">Resizer</span>
             </div>
             <div class="featured-tool-item" data-tool="optimizer" title="Compress and reduce GIF file size">
               <div class="featured-icon-box">
-                <img src="/icons/speedometer.svg" alt="" width="36" height="36" />
+                <img src="/icons/hero-optimizer.png" alt="" width="36" height="36" />
               </div>
               <span class="featured-tool-name">Optimizer</span>
             </div>

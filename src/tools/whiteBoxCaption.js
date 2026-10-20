@@ -26,11 +26,7 @@ export function renderWhiteBoxCaption(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <rect x="2" y="3" width="20" height="18" rx="2"></rect>
-            <line x1="2" y1="9" x2="22" y2="9"></line>
-            <line x1="6" y1="6" x2="18" y2="6"></line>
-          </svg>
+          <img src="/icons/draw-bezier-curves.png" class="tool-hero-icon" alt="Caption Maker" width="28" height="28" />
           <span class="tool-badge">Meme Studio</span>
           <h2>White Box Caption Maker</h2>
         </div>

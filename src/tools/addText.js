@@ -35,11 +35,7 @@ export function renderAddText(container, onChainMedia) {
     <div class="tool-view">
       <div class="tool-header">
         <div class="tool-title-row">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="tool-hero-icon-svg" style="color: var(--brand-red);">
-            <polyline points="4 7 4 4 20 4 20 7"></polyline>
-            <line x1="9" y1="20" x2="15" y2="20"></line>
-            <line x1="12" y1="4" x2="12" y2="20"></line>
-          </svg>
+          <img src="/icons/draw-text.png" class="tool-hero-icon" alt="Add Text" width="28" height="28" />
           <span class="tool-badge">Typography</span>
           <h2>Add Text to Animated GIF &amp; Images</h2>
         </div>
